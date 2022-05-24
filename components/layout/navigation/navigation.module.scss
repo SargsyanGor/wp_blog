@@ -1,0 +1,20 @@
+@import "styles/core/helpers";
+
+.gs_main_navbar {
+  position: fixed;
+  width: 80px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: map-get($z-index, navigation);
+  background: #ffffff;
+  .gs_hamburger_activator_block {
+    position: absolute;
+    width: inherit;
+    top: 50%;
+    font-size: 15px;
+    -webkit-transition: .35s ease-in-out transform;
+    transition: .35s ease-in-out transform;
+    transform: translate(0,-50%);
+  }
+}

@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+// google fonts-----------------------------------------------
+// Main font
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@300;400;600;700&family=Raleway:wght@300;400;600;700&display=swap');
+
+// Secondary font -> font-family: 'Zen Loop', cursive;
+@import url('https://fonts.googleapis.com/css2?family=Zen+Loop:ital@0;1&display=swap');
+
+
+body {
+  font-family: 'Raleway', sans-serif; // Main font
+}

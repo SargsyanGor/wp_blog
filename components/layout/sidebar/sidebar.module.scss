@@ -1,0 +1,39 @@
+@import 'styles/core/helpers';
+
+.gs_main_sidebar {
+  position: fixed;
+  width: 80px;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: map-get($z-index, sidebar);
+  background: #ffffff;
+  .gs_subscribe_block {
+    position: absolute;
+    width: inherit;
+    top: 50%;
+    font-size: 15px;
+    -webkit-transition: .35s ease-in-out transform;
+    transition: .35s ease-in-out transform;
+    transform: translate(0,-50%);
+    .gs_social_icon {
+      width: inherit;
+      display: block;
+      text-align: center;
+      margin: 14px 0;
+    }
+    .gs_rotated_text {
+      line-height: 80px;
+      display: inline-block;
+      white-space: nowrap;
+      transform: translate(0,100%) rotate(-90deg);
+      -webkit-transform-origin: 0 0;
+      transform-origin: 0 0;
+      &:after {
+        content: "";
+        float: left;
+        margin-top: 100%;
+      }
+    }
+  }
+}
