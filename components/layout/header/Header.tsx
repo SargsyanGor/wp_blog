@@ -9,7 +9,7 @@ const Header = () => {
     >
       <Link href="/">
         <a className={style['gs_brand']}>
-          <span>WP</span>blog
+          <span>WhitePaper</span>blog
         </a>
       </Link>
     </header>

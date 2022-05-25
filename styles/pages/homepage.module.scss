@@ -1,0 +1,16 @@
+.gs_main_articles_wrapper {
+  padding: 0 80px;
+  .gs_article {
+    width: calc(50% - 2px);
+    background-color: #000000;
+    padding-bottom: 33.3333%;
+    &.gs_article_big {
+      width: 100%;
+      padding-bottom: 45%;
+    }
+    .gs_meta {
+      transform: translate(-50%, -50%);
+      margin: 0 auto;
+    }
+  }
+}
