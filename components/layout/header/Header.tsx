@@ -8,8 +8,8 @@ const Header = () => {
       className={`flex items-center justify-center ` + style.gs_main_header}
     >
       <Link href="/">
-        <a className={style['gs_brand']}>
-          <span>WhitePaper</span>blog
+        <a className={`text-2xl font-bold ` + style['gs_brand']}>
+          The WhitePaper
         </a>
       </Link>
     </header>

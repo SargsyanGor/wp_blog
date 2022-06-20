@@ -19,3 +19,18 @@
     transform: translate(0,-50%);
   }
 }
+
+.gs_navbar_overlay {
+  z-index: map-get($z-index, navigationOverlay);
+  .gs_navbar_right_content_wrapper {
+    width: 35vw;
+    max-width: 450px;
+    padding: 0 80px 80px;
+    background-size: cover;
+    background-position: 60% 0;
+    background-image: url(/7ad3b96aa65bc7f8735d2a930bff63d1.jpg);
+    ul.gs_navigation_list {
+      transform: translate(0, -50%);
+    }
+  }
+}

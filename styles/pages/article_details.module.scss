@@ -1,0 +1,7 @@
+@import 'styles/core/helpers';
+
+.gs_primary_image_wrapper {
+  max-height: calc(100vh - 80px);
+  height: 100vh;
+  z-index: map-get($z-index, articlePrimaryImageWrapper);
+}
