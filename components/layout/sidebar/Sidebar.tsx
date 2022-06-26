@@ -9,7 +9,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <aside className={style.gs_main_sidebar}>
+      <aside id='gs_sidebar' className={style.gs_main_sidebar}>
         <div className={style.gs_subscribe_block}>
           <span className={style.gs_social_icon}>
             <Link href="/">

@@ -1,5 +1,8 @@
+@import "styles/core/helpers";
+
 .gs_main_footer {
   padding: 50px 80px;
+  z-index: map-get($z-index, footer);
   h2 {
     font-family: 'Raleway', sans-serif;
   }

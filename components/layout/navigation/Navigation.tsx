@@ -7,7 +7,7 @@ const Navigation = () => {
   const [showSidebar, setShowSidebar] = useState<boolean>(false)
 
   return (
-    <nav className={style.gs_main_navbar}>
+    <nav id='gs_navigation' className={style.gs_main_navbar}>
       <div className={style.gs_hamburger_activator_block}>
         <button
           onClick={() => {

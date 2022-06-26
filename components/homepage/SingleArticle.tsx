@@ -33,7 +33,7 @@ interface Props {
 }
 
 const SingleArticle = ({ post, bigArticle }: Props) => {
-  console.log(post.content)
+  // console.log(post.content)
   return (
     <article
       className={
