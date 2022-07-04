@@ -16,3 +16,8 @@ body {
 .gs_dialog {
   z-index: map-get($z-index, modal)
 }
+
+.gs_temporary-bounce {
+  -webkit-animation-iteration-count: 0.5;
+  animation-iteration-count: 0.5;
+}

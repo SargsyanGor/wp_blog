@@ -35,7 +35,7 @@ const LeaveCommentDialog: React.FC<Props> = ({ isOpen, setIsOpen }) => {
     if (validate(email)) {
       setStateOfWarningsBlock(false)
     } else {
-      setEmailError('Խնդրում ենք հավաքել գոյություն ունեցող մեյլի հասցե<span class="text-red-600 text-lg">*</span>')
+      setEmailError('Խնդրում ենք մուտքագրել գոյություն ունեցող մեյլի հասցե<span class="text-red-600 text-lg">*</span>')
       setStateOfWarningsBlock(true)
     }
   }

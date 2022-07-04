@@ -2,10 +2,11 @@ import Head from 'next/head'
 import Layout from '../components/layout/Layout'
 import type { AppProps } from 'next/app'
 import '../styles/globals.scss'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 
-function MyApp({ Component, pageProps }: AppProps) {
-  useEffect(() => {
+function TheWhitePaperApp({ Component, pageProps }: AppProps) {
+
+    useEffect(() => {
     const observer = new IntersectionObserver(
       function (entries) {
         // isIntersecting is true when element and viewport are overlapping
@@ -52,4 +53,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
 }
 
-export default MyApp
+export default TheWhitePaperApp

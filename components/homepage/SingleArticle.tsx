@@ -33,13 +33,12 @@ interface Props {
 }
 
 const SingleArticle = ({ post, bigArticle }: Props) => {
-  // console.log(post.content)
   return (
     <article
       className={
         `${
           bigArticle ? style.gs_article_big : ' '
-        } group relative mb-1 overflow-hidden text-center ` +
+        } group relative animate-bounce gs_temporary-bounce mb-1 overflow-hidden text-center ` +
         `${style.gs_article}`
       }
     >
@@ -59,7 +58,7 @@ const SingleArticle = ({ post, bigArticle }: Props) => {
         }
       >
         <span className="text-xs font-bold text-amber-500">
-          {post.categories[0].name} /{' '}
+          {post.categories[0].name} /
           {(post.content.text.length / 200).toFixed()} րոպե կարդալու համար
         </span>
         <h2 className="my-2.5 text-4xl font-bold uppercase">{post.title}</h2>

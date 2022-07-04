@@ -7,16 +7,18 @@ const Navigation = () => {
   const [showSidebar, setShowSidebar] = useState<boolean>(false)
 
   return (
-    <nav id='gs_navigation' className={style.gs_main_navbar}>
-      <div className={style.gs_hamburger_activator_block}>
-        <button
-          onClick={() => {
-            setShowSidebar(true)
-          }}
-        >
-          <Menu color="black" />
-        </button>
-      </div>
+    <>
+      <nav id="gs_navigation" className={style.gs_main_navbar}>
+        <div className={style.gs_hamburger_activator_block}>
+          <button
+            onClick={() => {
+              setShowSidebar(true)
+            }}
+          >
+            <Menu color="black" />
+          </button>
+        </div>
+      </nav>
       <div
         className={
           `fixed inset-0 bg-black bg-opacity-50 transition-all duration-200 ease-out ${
@@ -69,7 +71,7 @@ const Navigation = () => {
           </ul>
         </div>
       </div>
-    </nav>
+    </>
   )
 }
 

@@ -5,3 +5,7 @@
   height: 100vh;
   z-index: map-get($z-index, articlePrimaryImageWrapper);
 }
+
+.gs_reading_indicator {
+  z-index: map-get($z-index, readingIndicator);
+}
