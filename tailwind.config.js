@@ -4,7 +4,20 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        fadeIn: 'fadeIn 0.7s ease-in forwards',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
+        },
+      },
+    },
+  },
+  variants: {
+    animation: ['responsive', 'motion-safe', 'motion-reduce', 'hover']
   },
   plugins: [],
 }

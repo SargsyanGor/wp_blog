@@ -38,7 +38,7 @@ const SingleArticle = ({ post, bigArticle }: Props) => {
       className={
         `${
           bigArticle ? style.gs_article_big : ' '
-        } group relative animate-bounce gs_temporary-bounce mb-1 overflow-hidden text-center ` +
+        } gs_temporary-bounce group relative mb-1 animate-bounce overflow-hidden text-center ` +
         `${style.gs_article}`
       }
     >

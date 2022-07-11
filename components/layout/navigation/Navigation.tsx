@@ -49,21 +49,36 @@ const Navigation = () => {
           >
             <li className="mb-1">
               <Link href="/">
-                <a className="text-black duration-300 ease-in-out hover:text-gray-500">
+                <a
+                  onClick={() => {
+                    setShowSidebar(false)
+                  }}
+                  className="text-black duration-300 ease-in-out hover:text-gray-500"
+                >
                   Գլխավոր էջ
                 </a>
               </Link>
             </li>
             <li className="mb-1">
-              <Link href="/">
-                <a className="text-black duration-300 ease-in-out hover:text-gray-500">
+              <Link href="/about">
+                <a
+                  onClick={() => {
+                    setShowSidebar(false)
+                  }}
+                  className="text-black duration-300 ease-in-out hover:text-gray-500"
+                >
                   Հեղինակի մասին
                 </a>
               </Link>
             </li>
             <li>
-              <Link href="/">
-                <a className="text-black duration-300 ease-in-out hover:text-gray-500">
+              <Link href="/contact">
+                <a
+                  onClick={() => {
+                    setShowSidebar(false)
+                  }}
+                  className="text-black duration-300 ease-in-out hover:text-gray-500"
+                >
                   Կապ
                 </a>
               </Link>

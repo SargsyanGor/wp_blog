@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react'
-import style from '/styles/pages/article_details.module.scss'
+import React, { useEffect, useRef, useState } from 'react'
+import style from '/styles/pages/post_details.module.scss'
 import SocialSharing from '../../components/article-details/social-sharing/SocialSharing'
 import { Down } from 'grommet-icons'
 import SyntaxHighlighter from 'react-syntax-highlighter'
@@ -11,12 +11,16 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { getPostDetails, getAllPosts } from '../../services'
 import { PropTypePost } from '../../types'
 import moment from 'moment'
-import ReadingIndicator from "../../components/article-details/reading-indicator/ReadingIndicator";
+import ReadingIndicator from '../../components/article-details/reading-indicator/ReadingIndicator'
 
 const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
-  console.log(post)
+  const [firstRenderComplete, setFirstRenderComplete] = useState(false)
   const articleContainerRef = useRef(null)
   const mainArticleRef = useRef(null)
+
+  useEffect(() => {
+    setFirstRenderComplete(true)
+  }, [])
 
   const getContentFragment = (index: any, text: any, obj: any, type?: any) => {
     let modifiedText = text
@@ -108,7 +112,7 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
   }
   return (
     <main className="relative">
-      <ReadingIndicator target={mainArticleRef}/>
+      <ReadingIndicator target={mainArticleRef} />
       <div
         className={
           `relative flex items-center justify-center bg-black ` +
@@ -127,7 +131,9 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
           style={{
             backgroundImage: 'url(' + post.featuredImage.url + ')',
           }}
-          className="absolute top-0 left-0 h-full w-full bg-cover bg-fixed bg-no-repeat opacity-60"
+          className={`${
+            firstRenderComplete ? 'opacity-60' : 'opacity-0'
+          } absolute top-0 left-0 h-full w-full bg-cover bg-fixed bg-center bg-no-repeat transition-all duration-1000 ease-in`}
         />
         <button
           onClick={handleClick}
@@ -144,8 +150,8 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
         <article ref={mainArticleRef}>
           {post.content.raw.children.map((typeObj: any, index: Number) => {
             const children = typeObj.children.map(
-                (item: any, itemIndex: Number) =>
-                    getContentFragment(itemIndex, item.text, item)
+              (item: any, itemIndex: Number) =>
+                getContentFragment(itemIndex, item.text, item)
             )
             return getContentFragment(index, children, typeObj, typeObj.type)
           })}
@@ -157,8 +163,8 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
         <div className="mt-10 border-b-2 border-b-black pb-20 text-center">
           <div className="inline-flex items-center">
             <img
-              className="mr-4 h-10 w-10 rounded-full border border-gray-100 object-cover"
-              src="https://picsum.photos/id/870/2000/760"
+              className="mr-4 h-20 w-20 rounded-full border border-gray-100 object-cover"
+              src="/me.jpg"
               alt=""
             />
             <div className="text-left">
