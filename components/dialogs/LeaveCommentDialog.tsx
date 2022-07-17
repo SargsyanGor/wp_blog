@@ -2,6 +2,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import React, { Fragment, useEffect, useState } from 'react'
 import { validate } from 'email-validator'
 import { replaceWithBr } from '../../helpers'
+import {FormClose} from "grommet-icons";
 
 type Props = {
   isOpen: boolean
@@ -35,7 +36,7 @@ const LeaveCommentDialog: React.FC<Props> = ({ isOpen, setIsOpen }) => {
     if (validate(email)) {
       setStateOfWarningsBlock(false)
     } else {
-      setEmailError('Խնդրում ենք մուտքագրել գոյություն ունեցող մեյլի հասցե<span class="text-red-600 text-lg">*</span>')
+      setEmailError('Մուտքագրեք գոյություն ունեցող մեյլի հասցե<span class="text-red-600 text-lg">*</span>')
       setStateOfWarningsBlock(true)
     }
   }
@@ -69,9 +70,9 @@ const LeaveCommentDialog: React.FC<Props> = ({ isOpen, setIsOpen }) => {
               <Dialog.Panel className="relative w-full max-w-lg transform overflow-hidden bg-white px-14 pt-7 pb-14 align-middle shadow-xl transition-all">
                 <button
                   onClick={closeModal}
-                  className="absolute -right-20 -top-20 flex h-40 w-40 rotate-45 items-end justify-center bg-orange-400 pb-3 text-center text-sm text-white"
+                  className="absolute right-6 top-6"
                 >
-                  Փոշմանել
+                  <FormClose/>
                 </button>
 
                 <Dialog.Title
@@ -134,7 +135,7 @@ const LeaveCommentDialog: React.FC<Props> = ({ isOpen, setIsOpen }) => {
                         leaveTo="opacity-0"
                       >
                         <p
-                          className="mt-2 text-xs text-black"
+                          className="mt-2 text-xs text-black font-bold italic"
                           dangerouslySetInnerHTML={{
                             __html: replaceWithBr(emailError),
                           }}

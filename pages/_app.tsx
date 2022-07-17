@@ -5,8 +5,7 @@ import '../styles/globals.scss'
 import React, { useEffect } from 'react'
 
 function TheWhitePaperApp({ Component, pageProps }: AppProps) {
-
-    useEffect(() => {
+  useEffect(() => {
     const observer = new IntersectionObserver(
       function (entries) {
         // isIntersecting is true when element and viewport are overlapping

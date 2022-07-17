@@ -120,12 +120,14 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
         }
       >
         <div className="relative z-50 px-14 text-center text-white">
-          <span className="text-xs font-bold text-amber-500">
+          <span className="text-xxs font-bold text-amber-500 sm:text-xs">
             {post.categories[0].name} /{' '}
             {(post.content.text.length / 200).toFixed()} րոպե կարդալու համար
           </span>
-          <h2 className="my-2.5 text-4xl font-bold uppercase">{post.title}</h2>
-          <p className="text-xl italic">{post.excerp}</p>
+          <h2 className="my-2.5 text-2xl font-bold uppercase sm:text-3xl md:text-5xl 2xl:text-7xl">
+            {post.title}
+          </h2>
+          <p className="text-base sm:text-xl italic">{post.excerp}</p>
         </div>
         <div
           style={{
@@ -141,11 +143,14 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
         >
           <Down size="35px" color="white"></Down>
         </button>
-        <div className="absolute right-12 bottom-12">
+        <div className="absolute right-8 sm:right-12 bottom-12">
           <Likes theme="light" />
         </div>
       </div>
-      <div className="container mx-auto mt-20 w-1/2" ref={articleContainerRef}>
+      <div
+        className="container mx-auto mt-20 px-10 sm:w-1/2 sm:px-0"
+        ref={articleContainerRef}
+      >
         <SocialSharing />
         <article ref={mainArticleRef}>
           {post.content.raw.children.map((typeObj: any, index: Number) => {
@@ -176,17 +181,14 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
           </div>
         </div>
         <section className="my-20">
-          <h2 className="mb-16 text-center text-2xl font-bold">
-            Մեկնաբանություններ(4)
-          </h2>
-          <Comments />
-          <h2 className="mb-14 text-center text-2xl font-bold">
+          <Comments slug={post.slug}/>
+          <h2 className="mb-14 text-center text-lg font-bold sm:text-2xl">
             Թողնել մեկնաբանություն
           </h2>
-          <p className="mb-8 text-xs text-xs text-gray-500">
+          <p className="mb-8 text-xs text-gray-500">
             Ձեր մեյլի հասցեն չի հրապարակվի մեկնաբանություններ բաժնում*
           </p>
-          <CommentsForm />
+          <CommentsForm slug={post.slug}/>
         </section>
       </div>
     </main>

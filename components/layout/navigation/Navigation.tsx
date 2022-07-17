@@ -8,7 +8,7 @@ const Navigation = () => {
 
   return (
     <>
-      <nav id="gs_navigation" className={style.gs_main_navbar}>
+      <nav id="gs_navigation" className={`${style.gs_main_navbar} bg-white hidden md:block`}>
         <div className={style.gs_hamburger_activator_block}>
           <button
             onClick={() => {

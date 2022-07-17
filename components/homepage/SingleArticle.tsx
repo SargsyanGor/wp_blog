@@ -57,12 +57,14 @@ const SingleArticle = ({ post, bigArticle }: Props) => {
           style.gs_meta
         }
       >
-        <span className="text-xs font-bold text-amber-500">
+        <span className="text-xxs sm:text-xs 2xl:text-lg font-bold text-amber-500">
           {post.categories[0].name} /
           {(post.content.text.length / 200).toFixed()} րոպե կարդալու համար
         </span>
-        <h2 className="my-2.5 text-4xl font-bold uppercase">{post.title}</h2>
-        <p className="text-xl italic">{post.excerp}</p>
+        <h2 className="my-2.5 text-xl font-bold uppercase md:text-2xl lg:text-4xl">
+          {post.title}
+        </h2>
+        <p className="italic md:text-xl lg:text-2xl">{post.excerp}</p>
         <p className="mt-5 text-xs">
           {moment(post.createdAt).format('DD. MM. YYYY')}
         </p>

@@ -1,11 +1,10 @@
-import { GraphQLClient, gql } from "graphql-request";
-const graphcms = new GraphQLClient('https://api-eu-central-1.graphcms.com/v2/cl3cz5se61g5k01xn8gmo0g46/master');
-
-
+import { GraphQLClient, gql } from 'graphql-request'
+const graphcms = new GraphQLClient(
+  'https://api-eu-central-1.graphcms.com/v2/cl3cz5se61g5k01xn8gmo0g46/master'
+)
 
 // ALL POSTS QUERY
 export async function getAllPosts() {
-
   const query = gql`
     query MyAllPosts {
       postsConnection {
@@ -14,7 +13,7 @@ export async function getAllPosts() {
             author {
               bio
               name
-              id,
+              id
               photo {
                 url
               }
@@ -44,29 +43,23 @@ export async function getAllPosts() {
         }
       }
     }
-  `;
+  `
 
-  const results = await graphcms.request(query);
-  return results.postsConnection.edges;
+  const results = await graphcms.request(query)
+  return results.postsConnection.edges
 }
-
-
-
-
-
 
 // GET POSTS -> USED IN HOMEPAGE -> LOAD MORE
 export async function getPosts(lastPostCursorValue) {
-
   const query = gql`
-    query MyPosts($after: String){
+    query MyPosts($after: String) {
       postsConnection(orderBy: createdAt_DESC, first: 3, after: $after) {
         edges {
           node {
             author {
               bio
               name
-              id,
+              id
               photo {
                 url
               }
@@ -96,27 +89,20 @@ export async function getPosts(lastPostCursorValue) {
         }
       }
     }
-  `;
+  `
 
   const variables = {
     after: lastPostCursorValue,
   }
 
-  const results = await graphcms.request(query, variables);
-  return results.postsConnection;
+  const results = await graphcms.request(query, variables)
+  return results.postsConnection
 }
-
-
-
-
-
-
 
 // GET SINGLE POST WITH SLUG
 export async function getPostDetails(slug) {
-
   const query = gql`
-    query MyPost($slug: String!){
+    query MyPost($slug: String!) {
       post(where: { slug: $slug }) {
         content {
           text
@@ -137,12 +123,43 @@ export async function getPostDetails(slug) {
         }
       }
     }
-  `;
+  `
 
   const variables = {
     slug: slug,
   }
 
-  const results = await graphcms.request(query, variables);
-  return results.post;
+  const results = await graphcms.request(query, variables)
+  return results.post
+}
+
+// SUBMIT COMMENT -> USED IN post/[slug].tsx -> CommentsForm.tsx
+
+export const submitComment = async (obj) => {
+  const result = await fetch('/api/comments', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(obj),
+  })
+
+  return result.json()
+}
+
+// GET COMMENTS -> USED IN post/[slug].tsx -> Comments.tsx
+
+export const getComments = async (slug) => {
+  const query = gql`
+    query GetComments($slug: String!) {
+      comments(where: { post: { slug: $slug } }) {
+        name
+        createdAt
+        comment
+      }
+    }
+  `
+
+  const results = await graphcms.request(query, { slug })
+  return results.comments
 }

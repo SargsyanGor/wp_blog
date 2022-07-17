@@ -63,7 +63,7 @@ const About: NextPage = () => {
           </button>
         </div>
       </div>
-      <div className="container mx-auto w-1/2 py-20" ref={mainContentContainer}>
+      <div className="container mx-auto px-10 sm:w-1/2 sm:px-0 py-20" ref={mainContentContainer}>
         <div className="mb-20 text-center">
           <img className="mx-auto w-1/2 rounded-full" src="/me.jpeg" alt="me" />
         </div>

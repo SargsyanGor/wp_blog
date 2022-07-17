@@ -14,6 +14,9 @@ module.exports = {
           '100%': { opacity: 1 },
         },
       },
+      fontSize: {
+        'xxs': '.25rem',
+      }
     },
   },
   variants: {

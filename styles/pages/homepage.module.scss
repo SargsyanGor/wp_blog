@@ -1,3 +1,5 @@
 .gs_main_articles_wrapper {
-  padding: 0 80px;
+  @screen md{
+    padding: 0 80px;
+  }
 }

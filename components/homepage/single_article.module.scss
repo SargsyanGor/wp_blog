@@ -1,10 +1,15 @@
 .gs_article {
-  width: calc(50% - 2px);
   background-color: #000000;
   padding-bottom: 33.3333%;
+  min-height: 350px;
+  @screen md {
+    width: calc(50% - 2px);
+  }
   &.gs_article_big {
-    width: 100%;
     padding-bottom: 45%;
+    @screen md {
+      width: 100%;
+    }
   }
   .gs_meta {
     transform: translate(-50%, -50%);

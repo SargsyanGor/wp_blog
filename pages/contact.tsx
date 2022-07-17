@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { NextPage } from 'next'
-import { Checkmark, Down } from 'grommet-icons'
+import { Down } from 'grommet-icons'
 import style from '../styles/pages/about.module.scss'
 
 const Contact: NextPage = () => {
@@ -39,7 +39,7 @@ const Contact: NextPage = () => {
           </button>
         </div>
       </div>
-      <div className="container mx-auto w-1/2 py-20" ref={mainContentContainer}>
+      <div className="container mx-auto sm:px-0 sm:w-1/2 px-10 py-20" ref={mainContentContainer}>
         <form action="">
           <div className="mb-6">
             <label htmlFor="nameField">

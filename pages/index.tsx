@@ -25,10 +25,10 @@ const Home: NextPage<PropTypePosts> = ({ postsData }) => {
             const updatedPostsData = [...postsState, ...morePostsData.edges]
             setPosts(updatedPostsData)
           }}
-          className="group relative w-1/3 border-2 border-black font-bold transition-transform duration-200 ease-in hover:scale-105"
+          className="group relative w-1/3 border-2 border-black font-bold lg:transition-transform lg:duration-200 lg:ease-in lg:hover:scale-105"
         >
-          <span className="absolute inset-0 bg-black transition-transform duration-300 ease-in group-hover:scale-x-105 group-hover:scale-y-150"></span>
-          <div className="relative bg-white py-3">Բեռնել ավելին</div>
+          <span className="absolute inset-0 bg-black lg:transition-transform lg:duration-300 lg:ease-in lg:group-hover:scale-x-105 lg:group-hover:scale-y-150"></span>
+          <div className="relative bg-white py-3 text-sm md:text-base">Բեռնել ավելին</div>
         </button>
       )
     }
@@ -36,9 +36,10 @@ const Home: NextPage<PropTypePosts> = ({ postsData }) => {
 
   return (
     <>
-      <main
+      <section
         className={
-          `flex flex-wrap justify-between ` + style.gs_main_articles_wrapper
+          `flex flex-col justify-between md:flex-row md:flex-wrap ` +
+          style.gs_main_articles_wrapper
         }
       >
         {postsState &&
@@ -52,10 +53,10 @@ const Home: NextPage<PropTypePosts> = ({ postsData }) => {
               />
             )
           })}
-        <section className="my-16 w-full text-center">
-          {loadMorePostsButton()}
-        </section>
-      </main>
+      </section>
+      <section className='my-16 w-full text-center'>
+        {loadMorePostsButton()}
+      </section>
     </>
   )
 }
