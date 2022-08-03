@@ -13,9 +13,9 @@ const Comments = ({ slug }: any) => {
   return (
     <>
       {comments.length > 0 ? (
-        <h2 className="mb-16 text-center text-lg font-bold sm:text-2xl">
+        <p className="mb-16 text-center text-lg font-bold sm:text-2xl">
           Մեկնաբանություններ({comments.length})
-        </h2>
+        </p>
       ) : (
         ''
       )}

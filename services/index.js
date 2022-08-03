@@ -1,6 +1,7 @@
-import { GraphQLClient, gql } from 'graphql-request'
+import {gql, GraphQLClient} from 'graphql-request'
+
 const graphcms = new GraphQLClient(
-  'https://api-eu-central-1.graphcms.com/v2/cl3cz5se61g5k01xn8gmo0g46/master'
+    'https://api-eu-central-1.graphcms.com/v2/cl3cz5se61g5k01xn8gmo0g46/master'
 )
 
 // ALL POSTS QUERY
@@ -111,6 +112,7 @@ export async function getPostDetails(slug) {
         slug
         title
         excerp
+        likes
         featuredImage {
           url
         }
@@ -162,4 +164,23 @@ export const getComments = async (slug) => {
 
   const results = await graphcms.request(query, { slug })
   return results.comments
+}
+
+// ADD NEW LIKE TO SINGLE POST -> USED IN post/[slug].tsx -> Likes.tsx
+
+export const likePost = async (slug) => {
+  return await fetch('/api/add_like', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'text',
+    },
+    body: slug,
+  }).then((res) => {
+    if (!res.ok) {
+      throw Error('Something went wrong')
+    }
+    return true
+  }).catch((error) => {
+    return error
+  })
 }

@@ -40,5 +40,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
-# personal
-motivation.md
+# rss feed
+/public/rss

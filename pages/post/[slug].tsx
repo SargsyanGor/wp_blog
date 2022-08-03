@@ -8,18 +8,30 @@ import Comments from '../../components/article-details/comments/Comments'
 import Likes from '../../components/article-details/likes/Likes'
 import CommentsForm from '../../components/article-details/comments-form/CommentsForm'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import { getPostDetails, getAllPosts } from '../../services'
+import { getAllPosts, getPostDetails } from '../../services'
 import { PropTypePost } from '../../types'
 import moment from 'moment'
 import ReadingIndicator from '../../components/article-details/reading-indicator/ReadingIndicator'
+import { useRouter } from 'next/router'
+import Loader from '../../components/loader/Loader'
+import Head from 'next/head'
 
 const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
   const [firstRenderComplete, setFirstRenderComplete] = useState(false)
+  const [postLikes, setPostLikes] = useState(post.likes)
+  const [alreadyLikedArticles, setAlreadyLikedArticles] = useState<string[]>([])
   const articleContainerRef = useRef(null)
   const mainArticleRef = useRef(null)
+  const router = useRouter()
 
   useEffect(() => {
     setFirstRenderComplete(true)
+
+    const likedArticlesListLocalStorageData = JSON.parse(
+      localStorage.getItem('likedArticlesList') || '[]'
+    )
+
+    setAlreadyLikedArticles(likedArticlesListLocalStorageData)
   }, [])
 
   const getContentFragment = (index: any, text: any, obj: any, type?: any) => {
@@ -110,88 +122,155 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
       behavior: 'smooth',
     })
   }
+  const updateLikedArticlesData = () => {
+    setAlreadyLikedArticles((state) => [...state, post.slug])
+    const likedArticlesListLocalStorageData = JSON.parse(
+      localStorage.getItem('likedArticlesList') || '[]'
+    )
+    likedArticlesListLocalStorageData.push(post.slug)
+    // const updatedLikedArticlesObj = likedArticlesListLocalStorageData.push(post.slug)
+    localStorage.setItem(
+      'likedArticlesList',
+      JSON.stringify(likedArticlesListLocalStorageData)
+    )
+  }
+  const incrementLikes = () => {
+    setPostLikes(postLikes + 1)
+    updateLikedArticlesData()
+  }
+
+  if (router.isFallback) {
+    return <Loader />
+  }
+
   return (
-    <main className="relative">
-      <ReadingIndicator target={mainArticleRef} />
-      <div
-        className={
-          `relative flex items-center justify-center bg-black ` +
-          style.gs_primary_image_wrapper
-        }
-      >
-        <div className="relative z-50 px-14 text-center text-white">
-          <span className="text-xxs font-bold text-amber-500 sm:text-xs">
-            {post.categories[0].name} /{' '}
-            {(post.content.text.length / 200).toFixed()} րոպե կարդալու համար
-          </span>
-          <h2 className="my-2.5 text-2xl font-bold uppercase sm:text-3xl md:text-5xl 2xl:text-7xl">
-            {post.title}
-          </h2>
-          <p className="text-base sm:text-xl italic">{post.excerp}</p>
-        </div>
-        <div
-          style={{
-            backgroundImage: 'url(' + post.featuredImage.url + ')',
-          }}
-          className={`${
-            firstRenderComplete ? 'opacity-60' : 'opacity-0'
-          } absolute top-0 left-0 h-full w-full bg-cover bg-fixed bg-center bg-no-repeat transition-all duration-1000 ease-in`}
+    <>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+        ></meta>
+        <meta
+          name="robots"
+          content="index, follow, max-image-preview:large, max-snippet:-1"
         />
-        <button
-          onClick={handleClick}
-          className="absolute bottom-14 duration-300 hover:bottom-12"
+        <meta property="og:type" content="article" />
+        <meta
+          property="og:title"
+          content={post.title}
+        />
+
+        <meta
+          property="og:description"
+          content={post.excerp}
+        />
+        <meta property="og:url" content={`https://www.whitepaper.am/post/${post.slug}`} />
+        <meta
+          property="og:image"
+          content={post.featuredImage.url}
+        />
+        <link rel="canonical" href={`https://www.whitepaper.am/post/${post.slug}`} />
+        <title>{post.title}</title>
+        <meta
+          name="description"
+          content={post.excerp}
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <main className="relative">
+        <ReadingIndicator target={mainArticleRef} />
+        <div
+          className={
+            `relative flex items-center justify-center bg-black ` +
+            style.gs_primary_image_wrapper
+          }
         >
-          <Down size="35px" color="white"></Down>
-        </button>
-        <div className="absolute right-8 sm:right-12 bottom-12">
-          <Likes theme="light" />
-        </div>
-      </div>
-      <div
-        className="container mx-auto mt-20 px-10 sm:w-1/2 sm:px-0"
-        ref={articleContainerRef}
-      >
-        <SocialSharing />
-        <article ref={mainArticleRef}>
-          {post.content.raw.children.map((typeObj: any, index: Number) => {
-            const children = typeObj.children.map(
-              (item: any, itemIndex: Number) =>
-                getContentFragment(itemIndex, item.text, item)
-            )
-            return getContentFragment(index, children, typeObj, typeObj.type)
-          })}
-        </article>
-        <SocialSharing />
-        <div className="mt-32 flex items-center justify-center">
-          <Likes theme="dark" />
-        </div>
-        <div className="mt-10 border-b-2 border-b-black pb-20 text-center">
-          <div className="inline-flex items-center">
-            <img
-              className="mr-4 h-20 w-20 rounded-full border border-gray-100 object-cover"
-              src="/me.jpg"
-              alt=""
+          <div className="relative z-50 px-14 text-center text-white">
+            <span className="text-xxs font-bold text-amber-500 sm:text-xs">
+              {post.categories[0].name} /{' '}
+              {(post.content.text.length / 200).toFixed()} րոպե կարդալու համար
+            </span>
+            <h1 className="my-2.5 text-2xl font-bold uppercase sm:text-3xl md:text-5xl 2xl:text-7xl">
+              {post.title}
+            </h1>
+            <p className="text-base italic sm:text-xl">{post.excerp}</p>
+          </div>
+          <div
+            style={{
+              backgroundImage: 'url(' + post.featuredImage.url + ')',
+            }}
+            className={`${
+              firstRenderComplete ? 'opacity-60' : 'opacity-0'
+            } absolute top-0 left-0 h-full w-full bg-cover bg-fixed bg-center bg-no-repeat transition-all duration-1000 ease-in`}
+          />
+          <button
+            onClick={handleClick}
+            className="absolute bottom-14 duration-300 hover:bottom-12"
+          >
+            <Down size="35px" color="white"></Down>
+          </button>
+          <div className="absolute right-8 bottom-12 sm:right-12">
+            <Likes
+              likes={postLikes}
+              slug={post.slug}
+              theme="light"
+              incrementLikes={incrementLikes}
+              alreadyLikedArticlesList={alreadyLikedArticles}
             />
-            <div className="text-left">
-              <p className="text-sm">Հեղինակ՝ Գոռ Սարգսյան</p>
-              <p className="text-xs">
-                {moment(post.createdAt).format('DD. MM. YYYY')}
-              </p>
-            </div>
           </div>
         </div>
-        <section className="my-20">
-          <Comments slug={post.slug}/>
-          <h2 className="mb-14 text-center text-lg font-bold sm:text-2xl">
-            Թողնել մեկնաբանություն
-          </h2>
-          <p className="mb-8 text-xs text-gray-500">
-            Ձեր մեյլի հասցեն չի հրապարակվի մեկնաբանություններ բաժնում*
-          </p>
-          <CommentsForm slug={post.slug}/>
-        </section>
-      </div>
-    </main>
+        <div
+          className="container mx-auto mt-20 px-10 sm:w-1/2 sm:px-0"
+          ref={articleContainerRef}
+        >
+          <SocialSharing slug={post.slug} />
+          <article ref={mainArticleRef}>
+            {post.content.raw.children.map((typeObj: any, index: Number) => {
+              const children = typeObj.children.map(
+                (item: any, itemIndex: Number) =>
+                  getContentFragment(itemIndex, item.text, item)
+              )
+              return getContentFragment(index, children, typeObj, typeObj.type)
+            })}
+          </article>
+          <SocialSharing slug={post.slug} />
+          <div className="mt-32 flex items-center justify-center">
+            <Likes
+              likes={postLikes}
+              slug={post.slug}
+              theme="dark"
+              incrementLikes={incrementLikes}
+              alreadyLikedArticlesList={alreadyLikedArticles}
+            />
+          </div>
+          <div className="mt-10 border-b-2 border-b-black pb-20 text-center">
+            <div className="inline-flex items-center">
+              <img
+                className="mr-4 h-20 w-20 rounded-full border border-gray-100 object-cover"
+                src="/me.jpeg"
+                alt=""
+              />
+              <div className="text-left">
+                <p className="text-sm">Հեղինակ՝ Գոռ Սարգսյան</p>
+                <p className="text-xs">
+                  {moment(post.createdAt).format('DD. MM. YYYY')}
+                </p>
+              </div>
+            </div>
+          </div>
+          <section className="my-20">
+            <Comments slug={post.slug} />
+            <p className="mb-14 text-center text-lg font-bold sm:text-2xl">
+              Թողնել մեկնաբանություն
+            </p>
+            <p className="mb-8 text-xs text-gray-500">
+              Ձեր մեյլի հասցեն չի հրապարակվի մեկնաբանություններ բաժնում*
+            </p>
+            <CommentsForm slug={post.slug} />
+          </section>
+        </div>
+      </main>
+    </>
   )
 }
 
@@ -210,6 +289,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return {
     // @ts-ignore
     paths: posts.map(({ node: { slug } }) => ({ params: { slug } })), //indicates that no page needs be created at build time
-    fallback: false, //indicates the type of fallback
+    fallback: true, //indicates the type of fallback
   }
 }

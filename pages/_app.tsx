@@ -1,11 +1,16 @@
-import Head from 'next/head'
 import Layout from '../components/layout/Layout'
 import type { AppProps } from 'next/app'
 import '../styles/globals.scss'
 import React, { useEffect } from 'react'
+import Head from "next/head";
 
 function TheWhitePaperApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
+    // used to keep user data about liked posts
+    if (localStorage.getItem('likedArticlesList') === null) {
+      localStorage.setItem('likedArticlesList', JSON.stringify([]))
+    }
+
     const observer = new IntersectionObserver(
       function (entries) {
         // isIntersecting is true when element and viewport are overlapping
@@ -41,10 +46,6 @@ function TheWhitePaperApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Head>
-        <title>White paper blog</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <Layout>
         <Component {...pageProps} />
       </Layout>

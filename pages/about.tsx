@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import style from '../styles/pages/about.module.scss'
 import { NextPage } from 'next'
 import { Checkmark, Down } from 'grommet-icons'
+import Head from 'next/head'
 
 const About: NextPage = () => {
   const [firstRenderComplete, setFirstRenderComplete] = useState(false)
@@ -45,6 +46,34 @@ const About: NextPage = () => {
 
   return (
     <>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+        ></meta>
+        <meta
+          name="robots"
+          content="index, follow, max-image-preview:large, max-snippet:-1"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Whitepaper-ի հեղինակի մասին" />
+
+        <meta
+          property="og:description"
+          content="Ես Գոռն եմ՝ մասնագիտությամբ Front-end ծրագրավորող: Հանդիսանում եմ
+          Whitepaper-ի հիմնադիրն ու համահեղինակը: Աշխատում եմ որպես ծրագրավորող մոտ 5 տարի:"
+        />
+        <meta property="og:url" content="https://www.whitepaper.am/about" />
+        <meta property="og:image" content="https://www.whitepaper.am/me.jpg" />
+        <link rel="canonical" href="https://www.whitepaper.am/about" />
+        <title>Whitepaper-ի հեղինակի մասին</title>
+        <meta
+          name="description"
+          content="Ես Գոռն եմ՝ մասնագիտությամբ Front-end ծրագրավորող: Հանդիսանում եմ
+          Whitepaper-ի հիմնադիրն ու համահեղինակը: Աշխատում եմ որպես ծրագրավորող մոտ 5 տարի:"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className={`relative bg-black ` + style.gs_primary_image_wrapper}>
         <div
           style={{
@@ -63,9 +92,16 @@ const About: NextPage = () => {
           </button>
         </div>
       </div>
-      <div className="container mx-auto px-10 sm:w-1/2 sm:px-0 py-20" ref={mainContentContainer}>
+      <div
+        className="container mx-auto px-10 py-20 sm:w-1/2 sm:px-0"
+        ref={mainContentContainer}
+      >
         <div className="mb-20 text-center">
-          <img className="mx-auto w-1/2 rounded-full" src="/me.jpeg" alt="me" />
+          <img
+            className="mx-auto h-72 w-72 rounded-full object-cover"
+            src="/me.jpg"
+            alt="The Whitepaper author"
+          />
         </div>
         <p className="gs_show_on_scroll mb-12 text-2xl font-bold text-amber-500">
           Ողջույն!
@@ -84,7 +120,7 @@ const About: NextPage = () => {
         </p>
         <p className="gs_show_on_scroll mb-10">
           Քանի որ միայն տեխնիկական գիտելիքները բավական չեն առաջխաղացման համար,
-          կլինեն նաև անձնային աճին և սոֆտ սքիլերին վերաբերվող հոդվածներ:
+          կլինեն նաև անձնային աճին և սոֆթ սքիլերին վերաբերվող հոդվածներ:
         </p>
 
         <div className="mb-10">
@@ -129,7 +165,7 @@ const About: NextPage = () => {
 
         <div className="mb-10">
           <p className="gs_show_on_scroll mb-5">
-            Մի քանի հետաքրքիր փաստ իմ և Whitepaper-ի մասին
+            Մի քանի փաստ իմ և Whitepaper-ի մասին
           </p>
           <ul>
             <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
@@ -140,22 +176,12 @@ const About: NextPage = () => {
               </span>
             </li>
             <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
-              <Checkmark color="red" size="small" />
-              <span className="ml-3">
-                {' '}
-                Սիրում եմ մտովի գնալ մոլորակի տարբեր հատվածներ
-              </span>
-            </li>
-            <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
               <Checkmark color="blue" size="small" />
-              <span className="ml-3">
-                {' '}
-                Սիրում եմ մեքենայով գնալ անծանոթ վայրեր
-              </span>
+              <span className="ml-3"> Սիրում եմ գնալ անծանոթ վայրեր</span>
             </li>
             <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
               <Checkmark color="green" size="small" />
-              <span className="ml-3">Վախենում եմ պարապ մարդկանցից</span>
+              <span className="ml-3">Չեմ սիրում պարապ մարդկանց</span>
             </li>
             <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
               <Checkmark color="purple" size="small" />
