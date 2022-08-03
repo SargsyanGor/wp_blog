@@ -26,17 +26,13 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
 
   useEffect(() => {
     setFirstRenderComplete(true)
+    setPostLikes(post.likes)
     const likedArticlesListLocalStorageData = JSON.parse(
       localStorage.getItem('likedArticlesList') || '[]'
     )
 
     setAlreadyLikedArticles(likedArticlesListLocalStorageData)
   }, [])
-
-  useEffect(() => {
-    setPostLikes(post.likes)
-  });
-
 
   const getContentFragment = (index: any, text: any, obj: any, type?: any) => {
     let modifiedText = text
