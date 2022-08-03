@@ -17,8 +17,8 @@ import Loader from '../../components/loader/Loader'
 import Head from 'next/head'
 
 const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
-  const [firstRenderComplete, setFirstRenderComplete] = useState(false)
-  const [postLikes, setPostLikes] = useState(post.likes)
+  const [firstRenderComplete, setFirstRenderComplete] = useState<boolean>(false)
+  const [postLikes, setPostLikes] = useState<number>(0);
   const [alreadyLikedArticles, setAlreadyLikedArticles] = useState<string[]>([])
   const articleContainerRef = useRef(null)
   const mainArticleRef = useRef(null)
@@ -26,7 +26,7 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
 
   useEffect(() => {
     setFirstRenderComplete(true)
-
+    setPostLikes(post.likes)
     const likedArticlesListLocalStorageData = JSON.parse(
       localStorage.getItem('likedArticlesList') || '[]'
     )
@@ -247,7 +247,7 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
             <div className="inline-flex items-center">
               <img
                 className="mr-4 h-20 w-20 rounded-full border border-gray-100 object-cover"
-                src="/me.jpeg"
+                src="/me.jpg"
                 alt=""
               />
               <div className="text-left">

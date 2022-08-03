@@ -2,7 +2,6 @@ import Layout from '../components/layout/Layout'
 import type { AppProps } from 'next/app'
 import '../styles/globals.scss'
 import React, { useEffect } from 'react'
-import Head from "next/head";
 
 function TheWhitePaperApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
