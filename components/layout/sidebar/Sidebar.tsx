@@ -18,43 +18,40 @@ const Sidebar = () => {
       >
         <div className={style.gs_subscribe_block}>
           <span className={style.gs_social_icon}>
-            <Link href="/">
-              <a>
-                <Tooltip
-                  placement="right"
-                  overlay="Facebook"
-                  arrowContent={<div className="rc-tooltip-arrow-inner"></div>}
-                >
-                  <FacebookOption color="black"></FacebookOption>
-                </Tooltip>
-              </a>
-            </Link>
+            <a href="https://www.facebook.com/TheWPBlog" target="_blank">
+              <Tooltip
+                placement="right"
+                overlay="Facebook"
+                arrowContent={<div className="rc-tooltip-arrow-inner"></div>}
+              >
+                <FacebookOption color="black"></FacebookOption>
+              </Tooltip>
+            </a>
           </span>
           <span className={style.gs_social_icon}>
-            <Link href="/">
-              <a>
-                <Tooltip
+            <a
+              href="https://www.linkedin.com/company/the-whitepaper/"
+              target="_blank"
+            >
+              <Tooltip
+                placement="right"
+                overlay="Linkedin"
+                arrowContent={<div className="rc-tooltip-arrow-inner"></div>}
+              >
+                <LinkedinOption color="dark"></LinkedinOption>
+              </Tooltip>
+            </a>
+          </span>
+          <span className={style.gs_social_icon}>
+            <a href="https://pin.it/3ZUZl4F" target="_blank">
+              <Tooltip
                   placement="right"
                   overlay="Pinterest"
                   arrowContent={<div className="rc-tooltip-arrow-inner"></div>}
-                >
-                  <Pinterest color="dark"></Pinterest>
-                </Tooltip>
-              </a>
-            </Link>
-          </span>
-          <span className={style.gs_social_icon}>
-            <Link href="/">
-              <a>
-                <Tooltip
-                  placement="right"
-                  overlay="Linkedin"
-                  arrowContent={<div className="rc-tooltip-arrow-inner"></div>}
-                >
-                  <LinkedinOption color="dark"></LinkedinOption>
-                </Tooltip>
-              </a>
-            </Link>
+              >
+                <Pinterest color="dark"></Pinterest>
+              </Tooltip>
+            </a>
           </span>
           <p className={style.gs_rotated_text}>
             <button onClick={() => setIsOpen(true)}>Բաժանորդագրվել</button>

@@ -13,20 +13,41 @@ const SubscribeDialog: React.FC<Props> = ({ isOpen, setIsOpen }) => {
   const [email, setEmail] = useState<string>('')
   const [emailError, setEmailError] = useState<string>('')
   const [showWarningsBlock, setStateOfWarningsBlock] = useState<boolean>(false)
+  const [showSuccessMessage, setStateShowSuccessMessage] = useState<boolean>(false)
 
   const closeModal = () => {
     setIsOpen(false)
     setStateOfWarningsBlock(false)
+    setStateShowSuccessMessage(false)
     setEmailError('')
     setEmail('')
   }
 
-  const submitRequest = (event: React.ChangeEvent<HTMLFormElement>) => {
+  const submitRequest = async (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     if (validate(email)) {
       setStateOfWarningsBlock(false)
       // make request
+
+      const res = await fetch("/api/subscribe_user", {
+        body: JSON.stringify({
+          email: email,
+        }),
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+      });
+
+      if(res.status === 201) {
+        setStateShowSuccessMessage(true)
+      } else {
+        setStateShowSuccessMessage(false)
+        setEmailError('Կա սխալ :(')
+        setStateOfWarningsBlock(true)
+      }
     } else {
       if (!email.length) {
         setEmailError('Մուտքագրեք ձեր մեյլի հասցեն<span class="text-red-600 text-lg">*</span>')
@@ -110,6 +131,22 @@ const SubscribeDialog: React.FC<Props> = ({ isOpen, setIsOpen }) => {
                           __html: replaceWithBr(emailError),
                         }}
                     ></p>
+                  </Transition>
+
+                  <Transition
+                      show={showSuccessMessage}
+                      enter="transition-opacity duration-500"
+                      enterFrom="opacity-0"
+                      enterTo="opacity-100"
+                      leave="transition-opacity duration-500"
+                      leaveFrom="opacity-100"
+                      leaveTo="opacity-0"
+                  >
+                    <p
+                        className="mt-5 text-left text-xs text-green-600 text-black font-bold italic"
+                    >
+                      Շնորհակալություն բաժանորդագրվելու համար
+                    </p>
                   </Transition>
                 </div>
               </Dialog.Panel>

@@ -7,8 +7,8 @@ const Footer = () => {
       id="gs_footer"
       className={`relative bg-black text-center text-white ` + style.gs_main_footer}
     >
-      <h2 className="mb-4 text-2xl md:text-4xl font-bold">The WhitePaper</h2>
-      <p className="inline-block max-w-xs text-xs md:text-sm">
+      <h2 className="mb-2 text-2xl md:text-4xl font-bold">The WhitePaper</h2>
+      <p className="inline-block max-w-xs text-xxs italic">
         A silky & refined minimalist magazine. <br /> Less is more.
       </p>
       <p className="mt-20 text-xxs md:text-xs">

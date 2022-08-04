@@ -57,7 +57,7 @@ const Home: NextPage<PropTypePosts> = ({ postsData }) => {
 
         <meta
           property="og:description"
-          content="Հայատառ բլոգ-կայք Front-end ծրագրավորման մասին: Whitepaper-ում կգտնես մասնագիտական նյութեր Javascript-ի մասին և ոչ միայն:"
+          content="WhitePaper-ը բլոգ է` Front-end ծրագրավորման մասին: Այստեղ դու կգտնես լիքը նյութեր՝ Hard/Soft skills-երի, անձնային աճի, սթրեսակայունության և այլնի մասին:"
         />
         <meta property="og:url" content="https://www.whitepaper.am/" />
         <meta
@@ -68,7 +68,7 @@ const Home: NextPage<PropTypePosts> = ({ postsData }) => {
         <title>The Whitepaper - Բլոգ Front-end ծրագրավորման մասին</title>
         <meta
           name="description"
-          content="Հայատառ բլոգ-կայք Front-end ծրագրավորման մասին: Whitepaper-ում կգտնես մասնագիտական նյութեր Javascript-ի մասին և ոչ միայն:"
+          content="WhitePaper-ը բլոգ է` Front-end ծրագրավորման մասին: Այստեղ դու կգտնես լիքը նյութեր՝ Hard/Soft skills-երի, անձնային աճի, սթրեսակայունության և այլնի մասին:"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
