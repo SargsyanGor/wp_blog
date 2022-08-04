@@ -107,6 +107,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const data = (await getPosts()) || []
   return {
     props: { postsData: data },
-    revalidate: 60, // 1 day in seconds
+    revalidate: 240, // 1 day in seconds
   }
 }
