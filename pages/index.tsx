@@ -99,7 +99,7 @@ const Home: NextPage<PropTypePosts> = ({ postsData }) => {
 
 export default Home
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetStaticProps = async () => {
   const allPosts = (await getAllPosts()) || []
   // calling to generate the feed
   await generateRSS(allPosts)
@@ -107,6 +107,5 @@ export const getStaticProps: GetStaticProps = async () => {
   const data = (await getPosts()) || []
   return {
     props: { postsData: data },
-    revalidate: 240, // 1 day in seconds
   }
 }
