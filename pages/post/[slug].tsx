@@ -285,6 +285,8 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getAllPosts();
+
   return {
     // @ts-ignore
     paths: posts.map(({ node: { slug } }) => ({ params: { slug } })), //indicates that no page needs be created at build time
