@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import style from '/styles/pages/homepage.module.scss'
 import { getPosts, getAllPosts } from '../services'
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps} from 'next'
 import { PropTypePosts } from '../types'
 import generateRSS from '../helpers/generateRssFeed'
 import SingleArticle from '../components/homepage/SingleArticle'
@@ -102,7 +102,7 @@ export default Home
 export const getServerSideProps: GetServerSideProps = async () => {
   const allPosts = (await getAllPosts()) || []
   // calling to generate the feed
-  await generateRSS(allPosts)
+    generateRSS(allPosts)
 
   const data = (await getPosts()) || []
   return {

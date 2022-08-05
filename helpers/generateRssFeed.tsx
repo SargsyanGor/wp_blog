@@ -2,7 +2,7 @@ import fs from "fs";
 import { Feed } from "feed";
 import { getAllPosts } from "../services";
 
-export default async function generateRssFeed(allPosts: []) {
+export default function generateRssFeed(allPosts: []) {
     const posts = allPosts;
     const siteURL = 'whitepaper.am';
     const date = new Date();
