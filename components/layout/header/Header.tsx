@@ -25,45 +25,67 @@ const Header = () => {
             <p className="text-xs text-white">
               <button onClick={() => setIsOpen(true)}>Բաժանորդագրվել</button>
             </p>
-            <Link href="/">
-              <a className="mx-1">
-                <FacebookOption color="white"></FacebookOption>
-              </a>
-            </Link>
-            <Link href="/">
-              <a className="mx-1">
-                <Pinterest color="white"></Pinterest>
-              </a>
-            </Link>
-            <Link href="/">
-              <a className="mx-1">
-                <LinkedinOption color="white"></LinkedinOption>
-              </a>
-            </Link>
+            <a
+              href="https://www.facebook.com/TheWPBlog"
+              target="_blank"
+              className="mx-2"
+            >
+              <FacebookOption color="white"></FacebookOption>
+            </a>
+            <a href="https://pin.it/3ZUZl4F" target="_blank" className="mx-2">
+              <Pinterest color="white"></Pinterest>
+            </a>
+            <a
+              href="https://www.linkedin.com/company/the-whitepaper/"
+              target="_blank"
+              className="mx-2"
+            >
+              <LinkedinOption color="white"></LinkedinOption>
+            </a>
           </div>
-          <button onClick={() => {setNavigationState(current => !current)}}>
+          <button
+            onClick={() => {
+              setNavigationState((current) => !current)
+            }}
+          >
             <Menu color="white" />
           </button>
         </section>
-        <section className={`${navigationState ? 'block' : 'hidden'} text-white text-right text-xs py-4`}>
+        <section
+          className={`${
+            navigationState ? 'block' : 'hidden'
+          } py-4 text-right text-xs text-white`}
+        >
           <ul>
             <li className="mb-1">
               <Link href="/">
-                <a onClick={() => {setNavigationState(false)}}>
+                <a
+                  onClick={() => {
+                    setNavigationState(false)
+                  }}
+                >
                   Գլխավոր էջ
                 </a>
               </Link>
             </li>
             <li className="mb-1">
               <Link href="/about">
-                <a onClick={() => {setNavigationState(false)}}>
+                <a
+                  onClick={() => {
+                    setNavigationState(false)
+                  }}
+                >
                   Հեղինակի մասին
                 </a>
               </Link>
             </li>
             <li>
               <Link href="/contact">
-                <a onClick={() => {setNavigationState(false)}}>
+                <a
+                  onClick={() => {
+                    setNavigationState(false)
+                  }}
+                >
                   Կապ
                 </a>
               </Link>
