@@ -15,6 +15,7 @@ import ReadingIndicator from '../../components/article-details/reading-indicator
 import { useRouter } from 'next/router'
 import Loader from '../../components/loader/Loader'
 import Head from 'next/head'
+import generateRSS from "../../helpers/generateRssFeed";
 
 const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
   const [firstRenderComplete, setFirstRenderComplete] = useState<boolean>(false)
@@ -285,7 +286,9 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getAllPosts()
+  const posts = await getAllPosts();
+  // calling to generate the feed
+  await generateRSS(posts)
   return {
     // @ts-ignore
     paths: posts.map(({ node: { slug } }) => ({ params: { slug } })), //indicates that no page needs be created at build time

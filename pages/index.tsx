@@ -3,9 +3,8 @@ import style from '/styles/pages/homepage.module.scss'
 import { getPosts, getAllPosts } from '../services'
 import { GetServerSideProps} from 'next'
 import { PropTypePosts } from '../types'
-// import generateRSS from '../helpers/generateRssFeed'
 import SingleArticle from '../components/homepage/SingleArticle'
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import Head from 'next/head'
 
 const Home: NextPage<PropTypePosts> = ({ postsData }) => {
@@ -100,10 +99,6 @@ const Home: NextPage<PropTypePosts> = ({ postsData }) => {
 export default Home
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  // const allPosts = (await getAllPosts()) || []
-  // // calling to generate the feed
-  //   generateRSS(allPosts)
-
   const data = (await getPosts()) || []
   return {
     props: { postsData: data },
