@@ -6,6 +6,7 @@ import { PropTypePosts } from '../types'
 import SingleArticle from '../components/homepage/SingleArticle'
 import React, {useState} from 'react'
 import Head from 'next/head'
+// import generateRSS from "../helpers/generateRssFeed";
 
 const Home: NextPage<PropTypePosts> = ({ postsData }) => {
   const { aggregate, edges, pageInfo } = postsData
@@ -99,6 +100,10 @@ const Home: NextPage<PropTypePosts> = ({ postsData }) => {
 export default Home
 
 export const getServerSideProps: GetServerSideProps = async () => {
+    // const posts = await getAllPosts();
+    // // calling to generate the feed
+    // await generateRSS(posts)
+
   const data = (await getPosts()) || []
   return {
     props: { postsData: data },
