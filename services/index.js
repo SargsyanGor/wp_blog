@@ -165,22 +165,3 @@ export const getComments = async (slug) => {
   const results = await graphcms.request(query, { slug })
   return results.comments
 }
-
-// ADD NEW LIKE TO SINGLE POST -> USED IN post/[slug].tsx -> Likes.tsx
-
-export const likePost = async (slug) => {
-  return await fetch('/api/add_like', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'text',
-    },
-    body: slug,
-  }).then((res) => {
-    if (!res.ok) {
-      throw Error('Something went wrong')
-    }
-    return true
-  }).catch((error) => {
-    return error
-  })
-}

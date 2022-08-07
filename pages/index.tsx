@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import style from '/styles/pages/homepage.module.scss'
-import { getPosts, getAllPosts } from '../services'
+import { getPosts } from '../services'
 import { GetServerSideProps} from 'next'
 import { PropTypePosts } from '../types'
 import SingleArticle from '../components/homepage/SingleArticle'

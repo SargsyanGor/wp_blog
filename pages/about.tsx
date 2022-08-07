@@ -113,7 +113,7 @@ const About: NextPage = () => {
         </p>
 
         <p className="gs_show_on_scroll mb-10">
-          Իմ փոքրիկ բլոգում դու կգտնես լիքը մասնագիտական նյութեր, որոնք՝ հուսով
+          Իմ փոքրիկ բլոգում դու կգտնես մասնագիտական նյութեր, որոնք՝ հուսով
           եմ պետք կգան քեզ ու կօգնեն դառնալ ավելի լավը քո ոլորտում:
           Whitepaper-ում փորձելու եմ գրել բարդ բաների մասին՝ հնարավորինս բարզ,
           բայց լիարժեք:
@@ -144,7 +144,7 @@ const About: NextPage = () => {
             </li>
             <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
               <Checkmark color="blue" size="small" />
-              <span className="ml-3"> Կա լավ եկամտի շանսեր</span>
+              <span className="ml-3"> Կա լավ եկամուտ</span>
             </li>
             <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
               <Checkmark color="green" size="small" />
@@ -174,6 +174,10 @@ const About: NextPage = () => {
                 Մինչև ծրագրավորող դառնալը՝ 3 անգամ կիսատ եմ թողել ուսումս, քանի
                 որ անհամբեր էի ու շուտափույթ արդյունք էի ակնկալում
               </span>
+            </li>
+            <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
+              <Checkmark color="red" size="small" />
+              <span className="ml-3"> Ունեմ շուն՝ Գուչի անունով :)</span>
             </li>
             <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
               <Checkmark color="blue" size="small" />

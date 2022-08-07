@@ -5,11 +5,6 @@ import React, { useEffect } from 'react'
 
 function TheWhitePaperApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
-    // used to keep user data about liked posts
-    if (localStorage.getItem('likedArticlesList') === null) {
-      localStorage.setItem('likedArticlesList', JSON.stringify([]))
-    }
-
     const observer = new IntersectionObserver(
       function (entries) {
         // isIntersecting is true when element and viewport are overlapping

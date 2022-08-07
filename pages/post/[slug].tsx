@@ -5,7 +5,6 @@ import { Down } from 'grommet-icons'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { docco } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import Comments from '../../components/article-details/comments/Comments'
-import Likes from '../../components/article-details/likes/Likes'
 import CommentsForm from '../../components/article-details/comments-form/CommentsForm'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { getAllPosts, getPostDetails } from '../../services'
@@ -18,20 +17,12 @@ import Head from 'next/head'
 
 const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
   const [firstRenderComplete, setFirstRenderComplete] = useState<boolean>(false)
-  const [postLikes, setPostLikes] = useState<number>(0);
-  const [alreadyLikedArticles, setAlreadyLikedArticles] = useState<string[]>([])
   const articleContainerRef = useRef(null)
   const mainArticleRef = useRef(null)
   const router = useRouter()
 
   useEffect(() => {
     setFirstRenderComplete(true)
-    setPostLikes(post.likes)
-    const likedArticlesListLocalStorageData = JSON.parse(
-      localStorage.getItem('likedArticlesList') || '[]'
-    )
-
-    setAlreadyLikedArticles(likedArticlesListLocalStorageData)
   }, [])
 
   const getContentFragment = (index: any, text: any, obj: any, type?: any) => {
@@ -122,22 +113,6 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
       behavior: 'smooth',
     })
   }
-  const updateLikedArticlesData = () => {
-    setAlreadyLikedArticles((state) => [...state, post.slug])
-    const likedArticlesListLocalStorageData = JSON.parse(
-      localStorage.getItem('likedArticlesList') || '[]'
-    )
-    likedArticlesListLocalStorageData.push(post.slug)
-    // const updatedLikedArticlesObj = likedArticlesListLocalStorageData.push(post.slug)
-    localStorage.setItem(
-      'likedArticlesList',
-      JSON.stringify(likedArticlesListLocalStorageData)
-    )
-  }
-  const incrementLikes = () => {
-    setPostLikes(postLikes + 1)
-    updateLikedArticlesData()
-  }
 
   if (router.isFallback) {
     return <Loader />
@@ -209,15 +184,6 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
           >
             <Down size="35px" color="white"></Down>
           </button>
-          <div className="absolute right-8 bottom-12 sm:right-12">
-            <Likes
-              likes={postLikes}
-              slug={post.slug}
-              theme="light"
-              incrementLikes={incrementLikes}
-              alreadyLikedArticlesList={alreadyLikedArticles}
-            />
-          </div>
         </div>
         <div
           className="container mx-auto mt-20 px-10 sm:w-1/2 sm:px-0"
@@ -235,13 +201,6 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
           </article>
           <SocialSharing slug={post.slug} />
           <div className="mt-32 flex items-center justify-center">
-            <Likes
-              likes={postLikes}
-              slug={post.slug}
-              theme="dark"
-              incrementLikes={incrementLikes}
-              alreadyLikedArticlesList={alreadyLikedArticles}
-            />
           </div>
           <div className="mt-10 border-b-2 border-b-black pb-20 text-center">
             <div className="inline-flex items-center">
