@@ -6,7 +6,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { docco } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import Comments from '../../components/article-details/comments/Comments'
 import CommentsForm from '../../components/article-details/comments-form/CommentsForm'
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import {GetServerSideProps, GetStaticPaths, NextPage} from 'next'
 import { getAllPosts, getPostDetails } from '../../services'
 import { PropTypePost } from '../../types'
 import moment from 'moment'
@@ -235,7 +235,7 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
 
 export default ArticleDetails
 
-export const getStaticProps: GetStaticProps = async ({ params }: any) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }: any) => {
   const data = (await getPostDetails(params.slug)) || []
 
   return {
@@ -243,12 +243,12 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   }
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getAllPosts();
-
-  return {
-    // @ts-ignore
-    paths: posts.map(({ node: { slug } }) => ({ params: { slug } })), //indicates that no page needs be created at build time
-    fallback: true, //indicates the type of fallback
-  }
-}
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   const posts = await getAllPosts();
+//
+//   return {
+//     // @ts-ignore
+//     paths: posts.map(({ node: { slug } }) => ({ params: { slug } })), //indicates that no page needs be created at build time
+//     fallback: true, //indicates the type of fallback
+//   }
+// }
