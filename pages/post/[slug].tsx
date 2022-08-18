@@ -22,9 +22,21 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
   const router = useRouter()
 
   useEffect(() => {
-    console.log(post)
     setFirstRenderComplete(true)
   }, [])
+
+  const makeRecursiveSearch = (obj:any, searchKey:any, results:string[] = []) => {
+    const r = results;
+    Object.keys(obj).forEach(key => {
+      const value = obj[key];
+      if(key === searchKey && typeof value !== 'object'){
+        r.push(value);
+      }else if(typeof value === 'object'){
+        makeRecursiveSearch(value, searchKey, r);
+      }
+    });
+    return r;
+  };
 
   const getContentFragment = (index: any, text: any, obj: any, type?: any) => {
     let modifiedText = text
@@ -104,13 +116,15 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
           </blockquote>
         )
       case 'numbered-list':
-        console.log(obj)
+        const results = obj.children.map((item: any, i: any) => (
+            makeRecursiveSearch(item, 'text')
+        ))
         return (
             <div className="mb-20" key={index}>
               <ul className='list-decimal pl-12'>
-                {obj.children.map((item: any, i: any) => (
-                    <li key={i} className='mb-2'>{item.children[0].children[0].text}</li>
-                ))}
+                {results.map((item: string, i: any) => {
+                  return <li className='mb-2'>{item}</li>
+                })}
               </ul>
             </div>
         )
@@ -182,7 +196,7 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
         >
           <div className="relative z-50 px-14 text-center text-white">
             <span className="text-xxs font-bold text-amber-500 sm:text-xs">
-              {post.categories[0].name} /{' '}
+              {/*{post.categories[0].name} /{' '}*/}
               {(post.content.text.length / 200).toFixed()} րոպե կարդալու համար
             </span>
             <h1 className="my-2.5 text-2xl font-bold uppercase sm:text-3xl md:text-5xl 2xl:text-7xl">

@@ -58,7 +58,7 @@ const SingleArticle = ({ post, bigArticle }: Props) => {
         }
       >
         <span className="text-xxs font-bold text-amber-500 sm:text-xs 2xl:text-lg">
-          {post.categories[0].name} /{' '}
+          {/*{post.categories[0].name} /{' '}*/}
           {(post.content.text.length / 200).toFixed()} րոպե կարդալու համար
         </span>
         <h2 className="my-2.5 text-xl font-bold uppercase lg:text-2xl">
