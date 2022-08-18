@@ -45,7 +45,7 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
     switch (type) {
       case 'heading-two':
         return (
-          <h2 key={index} className="mb-8 text-2xl font-bold">
+          <h2 key={index} className="mt-16 mb-20 text-2xl font-bold">
             {modifiedText.map((item: any, i: any) => (
               <React.Fragment key={i}>{item}</React.Fragment>
             ))}
@@ -53,11 +53,19 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
         )
       case 'heading-three':
         return (
-          <h3 key={index} className="text-md mb-8 font-semibold">
+          <h3 key={index} className="text-md mt-16 mb-16 font-semibold">
             {modifiedText.map((item: any, i: any) => (
               <React.Fragment key={i}>{item}</React.Fragment>
             ))}
           </h3>
+        )
+      case 'heading-four':
+        return (
+            <h4 key={index} className="text-md mb-20 text-right font-semibold">
+              {modifiedText.map((item: any, i: any) => (
+                  <React.Fragment key={i}>{item}</React.Fragment>
+              ))}
+            </h4>
         )
       case 'paragraph':
         return (
@@ -80,7 +88,7 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
         )
       case 'block-quote':
         return (
-          <blockquote className="mb-16" key={index}>
+          <blockquote className="mb-10 mt-20" key={index}>
             <div className="h-3 text-left text-5xl leading-tight text-amber-500">
               “
             </div>
@@ -93,6 +101,16 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
               ”
             </div>
           </blockquote>
+        )
+      case 'numbered-list':
+        return (
+            <div className="mb-20" key={index}>
+              <ul className='list-decimal pl-12'>
+                {obj.children.map((item: any, i: any) => (
+                    <li className='mb-2'>{item.children[0].children[0].text}</li>
+                ))}
+              </ul>
+            </div>
         )
       case 'code-block':
         return (
