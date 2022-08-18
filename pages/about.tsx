@@ -61,7 +61,7 @@ const About: NextPage = () => {
         <meta
           property="og:description"
           content="Ես Գոռն եմ՝ մասնագիտությամբ Front-end ծրագրավորող: Հանդիսանում եմ
-          Whitepaper-ի հիմնադիրն ու համահեղինակը: Աշխատում եմ որպես ծրագրավորող մոտ 5 տարի:"
+          Whitepaper-ի հիմնադիրն ու համահեղինակը:"
         />
         <meta property="og:url" content="https://www.whitepaper.am/about" />
         <meta property="og:image" content="https://www.whitepaper.am/me.jpg" />
@@ -70,7 +70,7 @@ const About: NextPage = () => {
         <meta
           name="description"
           content="Ես Գոռն եմ՝ մասնագիտությամբ Front-end ծրագրավորող: Հանդիսանում եմ
-          Whitepaper-ի հիմնադիրն ու համահեղինակը: Աշխատում եմ որպես ծրագրավորող մոտ 5 տարի:"
+          Whitepaper-ի հիմնադիրն ու համահեղինակը:"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -107,92 +107,36 @@ const About: NextPage = () => {
           Ողջույն!
         </p>
         <p className="gs_show_on_scroll mb-10">
-          Ես Գոռն եմ՝ մասնագիտությամբ Front-end ծրագրավորող: Հանդիսանում եմ
-          Whitepaper-ի հիմնադիրը և միակ խմբագիրը :) Կայքը պատրաստել եմ ինքս` 4
-          ամսում: Աշխատում եմ որպես ծրագրավորող մոտ 5 տարի:
+          Ես Գոռն եմ՝ մասնագիտությամբ Front-end ծրագրավորող: Հանդիսանում եմ Whitepaper-ի հիմնադիրը և միակ խմբագիրը :) Կայքը պատրաստել եմ ինքս` 4 ամսում:
         </p>
 
         <p className="gs_show_on_scroll mb-10">
-          Իմ փոքրիկ բլոգում դու կգտնես մասնագիտական նյութեր, որոնք՝ հուսով
-          եմ պետք կգան քեզ ու կօգնեն դառնալ ավելի լավը քո ոլորտում:
-          Whitepaper-ում փորձելու եմ գրել բարդ բաների մասին՝ հնարավորինս բարզ,
-          բայց լիարժեք:
-        </p>
-        <p className="gs_show_on_scroll mb-10">
-          Քանի որ միայն տեխնիկական գիտելիքները բավական չեն առաջխաղացման համար,
-          կլինեն նաև անձնային աճին և սոֆթ սքիլերին վերաբերվող հոդվածներ:
+          Ինչպես և դու, ես էլ ունեմ ետևում թողած տարիներ ու կյանքի որոշակի փորձ:
+          Իմ փոքրիկ բլոգում դու կգտնես նյութեր՝ մինիմալիզմի, կյանքի փոքրիկ ուրախությունների մասին:
         </p>
 
         <div className="mb-10">
           <p className="gs_show_on_scroll mb-5">
-            Կնշեմ 5 կարևոր պատճառ թե ինչի ընտրեցի այս մասնագիտությունը՝
+            Մի քանի փաստ իմ մասին
           </p>
           <ul>
             <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
               <Checkmark color="orange" size="small" />
               <span className="ml-3">
-                {' '}
-                Սիրում եմ լուծել անհնարին թվացող խնդիրներ
+ Ինձ համար սպիտակ գույնը խորհրդանշումա՝ ամենօրյա սկիզբ, պարզություն
               </span>
             </li>
             <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
               <Checkmark color="red" size="small" />
-              <span className="ml-3">
-                {' '}
-                Կարող եմ աշխատելիս լսել երաժշտություն
-              </span>
+              <span className="ml-3"> Ունեմ մոպս զեղատեսակի շուն՝ Գուչի անունով</span>
             </li>
             <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
               <Checkmark color="blue" size="small" />
-              <span className="ml-3"> Կա լավ եկամուտ</span>
+              <span className="ml-3"> Սիրում եմ առանց ուղության քշել մեքենա</span>
             </li>
             <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
               <Checkmark color="green" size="small" />
-              <span className="ml-3">
-                {' '}
-                Ունեմ հնարավորություն անվերջ կատարելագործվելու
-              </span>
-            </li>
-            <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
-              <Checkmark color="purple" size="small" />
-              <span className="ml-3">
-                {' '}
-                Հաճելիա աշխատել գիտակից ու ինտելեկտուալ մարդկանց հետ
-              </span>
-            </li>
-          </ul>
-        </div>
-
-        <div className="mb-10">
-          <p className="gs_show_on_scroll mb-5">
-            Մի քանի փաստ իմ և Whitepaper-ի մասին
-          </p>
-          <ul>
-            <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
-              <Checkmark color="orange" size="small" />
-              <span className="ml-3">
-                Մինչև ծրագրավորող դառնալը՝ 3 անգամ կիսատ եմ թողել ուսումս, քանի
-                որ անհամբեր էի ու շուտափույթ արդյունք էի ակնկալում
-              </span>
-            </li>
-            <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
-              <Checkmark color="red" size="small" />
-              <span className="ml-3"> Ունեմ շուն՝ Գուչի անունով :)</span>
-            </li>
-            <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
-              <Checkmark color="blue" size="small" />
-              <span className="ml-3"> Սիրում եմ գնալ անծանոթ վայրեր</span>
-            </li>
-            <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
-              <Checkmark color="green" size="small" />
-              <span className="ml-3">Չեմ սիրում պարապ մարդկանց</span>
-            </li>
-            <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
-              <Checkmark color="purple" size="small" />
-              <span className="ml-3">
-                {' '}
-                Whitepaper-ի անունը սկզբում որոշել էի դնել JsCorner
-              </span>
+              <span className="ml-3">Չեմ սիրում պարապ մարդկանց ու կենցաղային անկապ հարցեր</span>
             </li>
           </ul>
         </div>
