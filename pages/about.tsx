@@ -132,7 +132,7 @@ const About: NextPage = () => {
             </li>
             <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
               <Checkmark color="blue" size="small" />
-              <span className="ml-3"> Սիրում եմ առանց ուղության քշել մեքենա</span>
+              <span className="ml-3"> Երեկոները սիրում եմ վարել մեքենա՝ առանց կոնկրետ ուղղության</span>
             </li>
             <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
               <Checkmark color="green" size="small" />
