@@ -6,8 +6,8 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { docco } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import Comments from '../../components/article-details/comments/Comments'
 import CommentsForm from '../../components/article-details/comments-form/CommentsForm'
-import {GetServerSideProps, GetStaticPaths, NextPage} from 'next'
-import { getAllPosts, getPostDetails } from '../../services'
+import {GetServerSideProps, NextPage} from 'next'
+import { getPostDetails } from '../../services'
 import { PropTypePost } from '../../types'
 import moment from 'moment'
 import ReadingIndicator from '../../components/article-details/reading-indicator/ReadingIndicator'
@@ -22,6 +22,7 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
   const router = useRouter()
 
   useEffect(() => {
+    console.log(post)
     setFirstRenderComplete(true)
   }, [])
 
@@ -83,7 +84,7 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
             height={obj.height}
             width={obj.width}
             src={obj.src}
-            className="mb-8 h-80 w-full object-cover"
+            className="mb-8 object-cover max-w-full"
           />
         )
       case 'block-quote':
@@ -103,11 +104,12 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
           </blockquote>
         )
       case 'numbered-list':
+        console.log(obj)
         return (
             <div className="mb-20" key={index}>
               <ul className='list-decimal pl-12'>
                 {obj.children.map((item: any, i: any) => (
-                    <li className='mb-2'>{item.children[0].children[0].text}</li>
+                    <li key={i} className='mb-2'>{item.children[0].children[0].text}</li>
                 ))}
               </ul>
             </div>
@@ -193,7 +195,7 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
               backgroundImage: 'url(' + post.featuredImage.url + ')',
             }}
             className={`${
-              firstRenderComplete ? 'opacity-60' : 'opacity-0'
+              firstRenderComplete ? 'opacity-80' : 'opacity-0'
             } absolute top-0 left-0 h-full w-full bg-cover bg-fixed bg-center bg-no-repeat transition-all duration-1000 ease-in`}
           />
           <button

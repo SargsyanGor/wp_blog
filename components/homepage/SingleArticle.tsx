@@ -47,7 +47,7 @@ const SingleArticle = ({ post, bigArticle }: Props) => {
           backgroundImage: 'url(' + post.featuredImage.url + ')',
         }}
         className={
-          `absolute top-0 left-0 right-0 bottom-0 h-full w-full bg-cover bg-center opacity-60 transition-all duration-700 ease-in-out group-hover:scale-105 group-hover:opacity-40 ` +
+          `absolute top-0 left-0 right-0 bottom-0 h-full w-full bg-cover bg-center opacity-70 transition-all duration-700 ease-in-out group-hover:scale-105 group-hover:opacity-40 ` +
           style.gs_image_placeholder
         }
       ></div>
@@ -61,10 +61,10 @@ const SingleArticle = ({ post, bigArticle }: Props) => {
           {post.categories[0].name} /{' '}
           {(post.content.text.length / 200).toFixed()} րոպե կարդալու համար
         </span>
-        <h2 className="my-2.5 text-xl font-bold uppercase md:text-2xl lg:text-4xl">
+        <h2 className="my-2.5 text-xl font-bold uppercase lg:text-2xl">
           {post.title}
         </h2>
-        <p className="italic md:text-xl lg:text-2xl">{post.excerp}</p>
+        <p className="italic text-sm md:text-base lg:text-xl">{post.excerp}</p>
         <p className="mt-5 text-xs">
           {moment(post.createdAt).format('DD. MM. YYYY')}
         </p>
