@@ -123,7 +123,7 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
             <div className="mb-20" key={index}>
               <ul className='list-decimal pl-12'>
                 {results.map((item: string, i: any) => {
-                  return <li className='mb-2'>{item}</li>
+                  return <li className='mb-2' key={i}>{item}</li>
                 })}
               </ul>
             </div>
