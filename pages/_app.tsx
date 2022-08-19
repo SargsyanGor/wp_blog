@@ -42,6 +42,7 @@ function TheWhitePaperApp({ Component, pageProps }: AppProps) {
   return (
     <>
         <Head>
+            <title></title>
             <link
                 rel="apple-touch-icon"
                 sizes="180x180"

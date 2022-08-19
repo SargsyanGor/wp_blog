@@ -41,6 +41,7 @@ const Home: NextPage<PropTypePosts> = ({ postsData }) => {
   return (
     <>
       <Head>
+        <title>The Whitepaper - անձնական բլոգ-կայք</title>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1"
@@ -52,12 +53,12 @@ const Home: NextPage<PropTypePosts> = ({ postsData }) => {
         <meta property="og:type" content="website" />
         <meta
           property="og:title"
-          content="The Whitepaper - անձնական բլոգ՝ մինիմալիզմի մասին"
+          content="The Whitepaper - անձնական բլոգ-կայք"
         />
 
         <meta
           property="og:description"
-          content="The Whitepaper-ը անձնական բլոգա՝ մինիմալիզմի, փոքրիկ ուրախությունների, կյանքն ավելի առողջ ու գիտակից ապրելու մասին:"
+          content="The Whitepaper-ը անձնական բլոգ է՝ համեմված մինիմալիզմի, կյանքն ավելի առողջ ու գիտակից ապրելու մասին հոդվածներով:"
         />
         <meta property="og:url" content="https://www.whitepaper.am/" />
         <meta
@@ -65,10 +66,9 @@ const Home: NextPage<PropTypePosts> = ({ postsData }) => {
           content="https://www.whitepaper.am/favicon.ico"
         />
         <link rel="canonical" href="https://www.whitepaper.am/" />
-        <title>The Whitepaper - Բլոգ Front-end ծրագրավորման մասին</title>
         <meta
           name="description"
-          content="The Whitepaper-ը անձնական բլոգա՝ մինիմալիզմի, փոքրիկ ուրախությունների, կյանքն ավելի առողջ ու գիտակից ապրելու մասին:"
+          content="The Whitepaper-ը անձնական բլոգ է՝ համեմված մինիմալիզմի, կյանքն ավելի առողջ ու գիտակից ապրելու մասին հոդվածներով:"
         />
       </Head>
       <section
