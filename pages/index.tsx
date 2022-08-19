@@ -63,7 +63,7 @@ const Home: NextPage<PropTypePosts> = ({ postsData }) => {
         <meta property="og:url" content="https://www.whitepaper.am/" />
         <meta
           property="og:image"
-          content="https://www.whitepaper.am/thewhitepaper.black.svg"
+          content="https://www.whitepaper.am/wp_cover.jpg"
         />
         <link rel="canonical" href="https://www.whitepaper.am/" />
         <meta
