@@ -184,7 +184,6 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
           name="description"
           content={post.excerp}
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="relative">
         <ReadingIndicator target={mainArticleRef} />
