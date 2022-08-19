@@ -107,36 +107,46 @@ const About: NextPage = () => {
           Ողջույն!
         </p>
         <p className="gs_show_on_scroll mb-10">
-          Ես Գոռն եմ՝ մասնագիտությամբ Front-end ծրագրավորող: Հանդիսանում եմ Whitepaper-ի հիմնադիրը և միակ խմբագիրը :) Կայքը պատրաստել եմ ինքս` 4 ամսում:
+          Ես Գոռն եմ՝ մասնագիտությամբ Front-end ծրագրավորող: Հանդիսանում եմ
+          Whitepaper-ի հիմնադիրը և միակ խմբագիրը :) Կայքը պատրաստել եմ ինքս` 4
+          ամսում:
         </p>
 
         <p className="gs_show_on_scroll mb-10">
           Ինչպես և դու, ես էլ ունեմ ետևում թողած տարիներ ու կյանքի որոշակի փորձ:
-          Իմ փոքրիկ բլոգում դու կգտնես նյութեր՝ մինիմալիզմի, կյանքի փոքրիկ ուրախությունների մասին:
+          Իմ փոքրիկ բլոգում դու կգտնես նյութեր՝ մինիմալիզմի, կյանքի փոքրիկ
+          ուրախությունների մասին:
         </p>
 
         <div className="mb-10">
-          <p className="gs_show_on_scroll mb-5">
-            Մի քանի փաստ իմ մասին
-          </p>
+          <p className="gs_show_on_scroll mb-5">Մի քանի փաստ իմ մասին</p>
           <ul>
             <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
               <Checkmark color="orange" size="small" />
               <span className="ml-3">
- Ինձ համար սպիտակ գույնը խորհրդանշումա՝ ամենօրյա սկիզբ, պարզություն
+                Ինձ համար սպիտակ գույնը խորհրդանշումա՝ ամենօրյա սկիզբ,
+                պարզություն
               </span>
             </li>
             <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
               <Checkmark color="red" size="small" />
-              <span className="ml-3"> Ունեմ մոպս զեղատեսակի շուն՝ Գուչի անունով</span>
+              <span className="ml-3">
+                {' '}
+                Ունեմ մոպս զեղատեսակի շուն՝ Գուչի անունով
+              </span>
             </li>
             <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
               <Checkmark color="blue" size="small" />
-              <span className="ml-3"> Երեկոները սիրում եմ վարել մեքենա՝ առանց կոնկրետ ուղղության</span>
+              <span className="ml-3">
+                {' '}
+                Երեկոները սիրում եմ վարել մեքենա՝ առանց կոնկրետ ուղղության
+              </span>
             </li>
             <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
               <Checkmark color="green" size="small" />
-              <span className="ml-3">Չեմ սիրում պարապ մարդկանց ու կենցաղային անկապ հարցեր</span>
+              <span className="ml-3">
+                Չեմ սիրում կենցաղային անկապ հարցեր
+              </span>
             </li>
           </ul>
         </div>
