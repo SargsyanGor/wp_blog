@@ -3,7 +3,12 @@
 .gs_main_footer {
   padding: 50px 80px;
   z-index: map-get($z-index, footer);
-  h2 {
-    font-family: 'Raleway', sans-serif;
-  }
+    .gs_wp_logo {
+      display: inline-block;
+      width: 180px;
+      height: 40px;
+      background-image: url('../../../public/thewhitepaper.white.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
 }

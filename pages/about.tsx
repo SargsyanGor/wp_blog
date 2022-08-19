@@ -81,7 +81,7 @@ const About: NextPage = () => {
           }}
           className={`${
             firstRenderComplete ? 'opacity-80' : 'opacity-0'
-          } absolute top-0 left-0 h-full w-full bg-cover bg-fixed bg-center bg-no-repeat transition-all duration-1000 ease-in`}
+          } absolute top-0 left-0 h-full w-full bg-cover lg:bg-fixed bg-center bg-no-repeat transition-all duration-1000 ease-in`}
         />
         <div className="text-center">
           <button

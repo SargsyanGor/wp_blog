@@ -5,9 +5,14 @@ const Footer = () => {
   return (
     <footer
       id="gs_footer"
-      className={`relative bg-black text-center text-white ` + style.gs_main_footer}
+      className={
+        `relative bg-black text-center text-white ` + style.gs_main_footer
+      }
     >
-      <h2 className="mb-2 text-2xl md:text-4xl font-bold">The WhitePaper</h2>
+      <div>
+        {' '}
+        <i className={style.gs_wp_logo}></i>
+      </div>
       <p className="inline-block text-xs italic">
         A silky & refined minimalist magazine. <br /> Less is more.
       </p>

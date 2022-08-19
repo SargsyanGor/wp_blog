@@ -15,7 +15,7 @@ const Header = () => {
       >
         <Link href="/">
           <a className={`text-2xl font-bold ` + style['gs_brand']}>
-            The WhitePaper
+            <i className={style.gs_wp_logo}></i>
           </a>
         </Link>
       </header>

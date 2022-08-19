@@ -2,6 +2,13 @@
   min-height: 80px;
   background-color: #fff;
   .gs_brand {
-    font-family: 'Raleway', sans-serif;
+    i.gs_wp_logo {
+      display: inline-block;
+      width: 200px;
+      height: 40px;
+      background-image: url('../../../public/thewhitepaper.black.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
   }
 }
