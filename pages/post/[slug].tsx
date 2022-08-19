@@ -195,7 +195,7 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
           }
         >
           <div className="relative z-50 px-14 text-center text-white">
-            <span className="text-xxs font-bold text-amber-500 sm:text-xs">
+            <span className="text-xs font-bold text-amber-500">
               {/*{post.categories[0].name} /{' '}*/}
               {(post.content.text.length / 200).toFixed()} րոպե կարդալու համար
             </span>
@@ -210,7 +210,7 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
             }}
             className={`${
               firstRenderComplete ? 'opacity-80' : 'opacity-0'
-            } absolute top-0 left-0 h-full w-full bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in`}
+            } absolute top-0 left-0 h-full w-full bg-cover lg:bg-fixed bg-center bg-no-repeat transition-all duration-1000 ease-in`}
           />
           <button
             onClick={handleClick}
