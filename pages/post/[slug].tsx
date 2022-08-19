@@ -155,10 +155,10 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
   return (
     <>
       <Head>
-        {/*<meta*/}
-        {/*  name="viewport"*/}
-        {/*  content="width=device-width, initial-scale=1"*/}
-        {/*></meta>*/}
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+        ></meta>
         <meta
           name="robots"
           content="index, follow, max-image-preview:large, max-snippet:-1"
@@ -210,7 +210,7 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
             }}
             className={`${
               firstRenderComplete ? 'opacity-80' : 'opacity-0'
-            } absolute top-0 left-0 h-full w-full bg-cover bg-fixed bg-center bg-no-repeat transition-all duration-1000 ease-in`}
+            } absolute top-0 left-0 h-full w-full bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in`}
           />
           <button
             onClick={handleClick}
