@@ -61,10 +61,10 @@ const SingleArticle = ({ post, bigArticle }: Props) => {
           {/*{post.categories[0].name} /{' '}*/}
           {(post.content.text.length / 200).toFixed()} րոպե կարդալու համար
         </span>
-        <h2 className="my-2.5 text-xl font-bold uppercase lg:text-2xl">
+        <h2 className="my-2.5 text-xl font-bold uppercase lg:text-2xl gs_text_shadow">
           {post.title}
         </h2>
-        <p className="italic text-sm md:text-base lg:text-xl">{post.excerp}</p>
+        <p className="italic text-sm md:text-base lg:text-xl gs_text_shadow">{post.excerp}</p>
         <p className="mt-5 text-xs">
           {moment(post.createdAt).format('DD. MM. YYYY')}
         </p>
