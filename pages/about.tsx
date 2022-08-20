@@ -81,7 +81,7 @@ const About: NextPage = () => {
           }}
           className={`${
             firstRenderComplete ? 'opacity-80' : 'opacity-0'
-          } absolute top-0 left-0 h-full w-full bg-cover lg:bg-fixed bg-center bg-no-repeat transition-all duration-1000 ease-in`}
+          } absolute top-0 left-0 h-full w-full bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in lg:bg-fixed`}
         />
         <div className="text-center">
           <button
@@ -113,9 +113,15 @@ const About: NextPage = () => {
         </p>
 
         <p className="gs_show_on_scroll mb-10">
-          Ինչպես և դու, ես էլ ունեմ ետևում թողած տարիներ ու կյանքի որոշակի փորձ:
-          Իմ փոքրիկ բլոգում դու կգտնես նյութեր՝ մինիմալիզմի, կյանքի փոքրիկ
-          ուրախությունների մասին:
+          Ինչպես և դու, ես էլ ունեմ ետևում թողած տարիներ ու կյանքի որոշակի փորձ,
+          ու կա ցանկություն կիսվելու սեփական մտքերով: The WhitePaper-ը «քիփլիկ»
+          անձնական բլոգ է՝ համեմված մինիմալիզմի, կյանքն ավելի առողջ ու գիտակից
+          ապրելու մասին հոդվածներով:
+        </p>
+
+        <p className="gs_show_on_scroll mb-10">
+          Պետք է նշեմ, որ շատ դժվարա տրվում՝ նոր կոնտենտ ստեղծելը ու կխնդրեմ
+          խիստ չդատես՝ քերականական կամ իմաստային սխալների համար :)
         </p>
 
         <div className="mb-10">
@@ -144,9 +150,7 @@ const About: NextPage = () => {
             </li>
             <li className="gs_show_on_scroll mb-2 flex items-center text-sm italic">
               <Checkmark color="green" size="small" />
-              <span className="ml-3">
-                Չեմ սիրում կենցաղային անկապ հարցեր
-              </span>
+              <span className="ml-3">Չեմ սիրում կենցաղային անկապ հարցեր</span>
             </li>
           </ul>
         </div>
