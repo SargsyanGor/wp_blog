@@ -22,7 +22,6 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
   const router = useRouter()
 
   useEffect(() => {
-    console.log(post.content)
     setFirstRenderComplete(true)
   }, [])
 
