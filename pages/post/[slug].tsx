@@ -96,7 +96,7 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
             height={obj.height}
             width={obj.width}
             src={obj.src}
-            className="mb-8 object-cover max-w-full"
+            className="mb-8 border-black border-4 object-cover max-w-full"
           />
         )
       case 'block-quote':
