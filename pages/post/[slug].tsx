@@ -22,6 +22,7 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
   const router = useRouter()
 
   useEffect(() => {
+    console.log(post.content)
     setFirstRenderComplete(true)
   }, [])
 
@@ -52,6 +53,9 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
 
       if (obj.underline) {
         modifiedText = <u key={index}>{text}</u>
+      }
+      if (obj.type === 'link') {
+        modifiedText = <a className='text-amber-600 underline' target='_blank' href={obj.href} key={index}>{obj.children[0].text}</a>
       }
     }
 
