@@ -57,7 +57,7 @@ const SingleArticle = ({ post, bigArticle }: Props) => {
           style.gs_meta
         }
       >
-        <span className="text-xs font-bold text-amber-500 2xl:text-lg">
+        <span className="text-xs font-bold text-amber-500 2xl:text-lg gs_text_shadow">
           {/*{post.categories[0].name} /{' '}*/}
           {(post.content.text.length / 200).toFixed()} րոպե կարդալու համար
         </span>
