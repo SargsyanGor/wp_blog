@@ -107,9 +107,8 @@ const About: NextPage = () => {
           Ողջույն!
         </p>
         <p className="gs_show_on_scroll mb-10">
-          Ես Գոռն եմ՝ մասնագիտությամբ Front-end ծրագրավորող: Հանդիսանում եմ
-          Whitepaper-ի հիմնադիրը և միակ խմբագիրը :) Կայքը պատրաստել եմ ինքս` 4
-          ամսում:
+          Ես Գոռն եմ: Հանդիսանում եմ
+          Whitepaper-ի հիմնադիրը և միակ խմբագիրը :)
         </p>
 
         <p className="gs_show_on_scroll mb-10">
