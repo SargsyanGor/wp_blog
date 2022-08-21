@@ -6,7 +6,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { docco } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import Comments from '../../components/article-details/comments/Comments'
 import CommentsForm from '../../components/article-details/comments-form/CommentsForm'
-import {GetServerSideProps, NextPage} from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import { getPostDetails } from '../../services'
 import { PropTypePost } from '../../types'
 import moment from 'moment'
@@ -14,6 +14,7 @@ import ReadingIndicator from '../../components/article-details/reading-indicator
 import { useRouter } from 'next/router'
 import Loader from '../../components/loader/Loader'
 import Head from 'next/head'
+import { countReadingTime } from '../../helpers'
 
 const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
   const [firstRenderComplete, setFirstRenderComplete] = useState<boolean>(false)
@@ -25,18 +26,22 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
     setFirstRenderComplete(true)
   }, [])
 
-  const makeRecursiveSearch = (obj:any, searchKey:any, results:string[] = []) => {
-    const r = results;
-    Object.keys(obj).forEach(key => {
-      const value = obj[key];
-      if(key === searchKey && typeof value !== 'object'){
-        r.push(value);
-      }else if(typeof value === 'object'){
-        makeRecursiveSearch(value, searchKey, r);
+  const makeRecursiveSearch = (
+    obj: any,
+    searchKey: any,
+    results: string[] = []
+  ) => {
+    const r = results
+    Object.keys(obj).forEach((key) => {
+      const value = obj[key]
+      if (key === searchKey && typeof value !== 'object') {
+        r.push(value)
+      } else if (typeof value === 'object') {
+        makeRecursiveSearch(value, searchKey, r)
       }
-    });
-    return r;
-  };
+    })
+    return r
+  }
 
   const getContentFragment = (index: any, text: any, obj: any, type?: any) => {
     let modifiedText = text
@@ -54,7 +59,16 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
         modifiedText = <u key={index}>{text}</u>
       }
       if (obj.type === 'link') {
-        modifiedText = <a className='text-amber-600 underline' target='_blank' href={obj.href} key={index}>{obj.children[0].text}</a>
+        modifiedText = (
+          <a
+            className="text-amber-600 underline"
+            target="_blank"
+            href={obj.href}
+            key={index}
+          >
+            {obj.children[0].text}
+          </a>
+        )
       }
     }
 
@@ -77,11 +91,11 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
         )
       case 'heading-four':
         return (
-            <h4 key={index} className="text-md mb-20 text-right font-semibold">
-              {modifiedText.map((item: any, i: any) => (
-                  <React.Fragment key={i}>{item}</React.Fragment>
-              ))}
-            </h4>
+          <h4 key={index} className="text-md mb-20 text-right font-semibold">
+            {modifiedText.map((item: any, i: any) => (
+              <React.Fragment key={i}>{item}</React.Fragment>
+            ))}
+          </h4>
         )
       case 'paragraph':
         return (
@@ -99,7 +113,7 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
             height={obj.height}
             width={obj.width}
             src={obj.src}
-            className="mb-8 border-black border-4 object-cover max-w-full"
+            className="mb-8 max-w-full border-4 border-black object-cover"
           />
         )
       case 'block-quote':
@@ -119,17 +133,21 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
           </blockquote>
         )
       case 'numbered-list':
-        const results = obj.children.map((item: any, i: any) => (
-            makeRecursiveSearch(item, 'text')
-        ))
+        const results = obj.children.map((item: any, i: any) =>
+          makeRecursiveSearch(item, 'text')
+        )
         return (
-            <div className="mb-20" key={index}>
-              <ul className='list-decimal pl-12'>
-                {results.map((item: string, i: any) => {
-                  return <li className='mb-2' key={i}>{item}</li>
-                })}
-              </ul>
-            </div>
+          <div className="mb-20" key={index}>
+            <ul className="list-decimal pl-12">
+              {results.map((item: string, i: any) => {
+                return (
+                  <li className="mb-2" key={i}>
+                    {item}
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
         )
       case 'code-block':
         return (
@@ -167,26 +185,20 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
           content="index, follow, max-image-preview:large, max-snippet:-1"
         />
         <meta property="og:type" content="article" />
-        <meta
-          property="og:title"
-          content={post.title}
-        />
+        <meta property="og:title" content={post.title} />
 
+        <meta property="og:description" content={post.excerp} />
         <meta
-          property="og:description"
-          content={post.excerp}
+          property="og:url"
+          content={`https://www.whitepaper.am/post/${post.slug}`}
         />
-        <meta property="og:url" content={`https://www.whitepaper.am/post/${post.slug}`} />
-        <meta
-          property="og:image"
-          content={post.featuredImage.url}
+        <meta property="og:image" content={post.featuredImage.url} />
+        <link
+          rel="canonical"
+          href={`https://www.whitepaper.am/post/${post.slug}`}
         />
-        <link rel="canonical" href={`https://www.whitepaper.am/post/${post.slug}`} />
         <title>{post.title}</title>
-        <meta
-          name="description"
-          content={post.excerp}
-        />
+        <meta name="description" content={post.excerp} />
       </Head>
       <main className="relative">
         <ReadingIndicator target={mainArticleRef} />
@@ -197,14 +209,16 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
           }
         >
           <div className="relative z-50 px-14 text-center text-white">
-            <span className="text-xs font-bold text-amber-500 gs_text_shadow">
+            <span className="gs_text_shadow text-xs font-bold text-amber-500">
               {/*{post.categories[0].name} /{' '}*/}
-              {(post.content.text.length / 200).toFixed()} րոպե կարդալու համար
+              {countReadingTime(post.content.text)} րոպե կարդալու համար
             </span>
-            <h1 className="my-2.5 text-2xl font-bold uppercase sm:text-3xl md:text-5xl 2xl:text-7xl gs_text_shadow">
+            <h1 className="gs_text_shadow my-2.5 text-2xl font-bold uppercase sm:text-3xl md:text-5xl 2xl:text-7xl">
               {post.title}
             </h1>
-            <p className="text-base italic sm:text-xl gs_text_shadow">{post.excerp}</p>
+            <p className="gs_text_shadow text-base italic sm:text-xl">
+              {post.excerp}
+            </p>
           </div>
           <div
             style={{
@@ -212,7 +226,7 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
             }}
             className={`${
               firstRenderComplete ? 'opacity-70' : 'opacity-0'
-            } absolute top-0 left-0 h-full w-full bg-cover lg:bg-fixed bg-center bg-no-repeat transition-all duration-1000 ease-in`}
+            } absolute top-0 left-0 h-full w-full bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in lg:bg-fixed`}
           />
           <button
             onClick={handleClick}
@@ -236,8 +250,7 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
             })}
           </article>
           <SocialSharing slug={post.slug} />
-          <div className="mt-32 flex items-center justify-center">
-          </div>
+          <div className="mt-32 flex items-center justify-center"></div>
           <div className="mt-10 border-b-2 border-b-black pb-20 text-center">
             <div className="inline-flex items-center">
               <img
@@ -271,7 +284,9 @@ const ArticleDetails: NextPage<PropTypePost> = ({ post }: PropTypePost) => {
 
 export default ArticleDetails
 
-export const getServerSideProps: GetServerSideProps = async ({ params }: any) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  params,
+}: any) => {
   const data = (await getPostDetails(params.slug)) || []
 
   return {

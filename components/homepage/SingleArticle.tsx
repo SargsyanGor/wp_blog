@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import style from './single_article.module.scss'
 import moment from 'moment'
+import {useEffect} from "react";
+import { countReadingTime } from '../../helpers'
 
 interface Props {
   post: {
@@ -59,7 +61,7 @@ const SingleArticle = ({ post, bigArticle }: Props) => {
       >
         <span className="text-xs font-bold text-amber-500 2xl:text-lg gs_text_shadow">
           {/*{post.categories[0].name} /{' '}*/}
-          {(post.content.text.length / 200).toFixed()} րոպե կարդալու համար
+          {countReadingTime(post.content.text)} րոպե կարդալու համար
         </span>
         <h2 className="my-2.5 text-xl font-bold uppercase lg:text-2xl gs_text_shadow">
           {post.title}
