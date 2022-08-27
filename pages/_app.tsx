@@ -56,20 +56,21 @@ function TheWhitePaperApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Head>
-        <Script
+      <Script
           strategy={'afterInteractive'}
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_ID}`}
-        ></Script>
-        <Script strategy={'afterInteractive'} id="google-analytics-script">
-          {`
+      ></Script>
+      <Script strategy={'afterInteractive'} id="google-analytics-script">
+        {`
                   window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);}
                   gtag('js', new Date());
                 
                   gtag('config', '${process.env.GOOGLE_ANALYTICS_ID}');
             `}
-        </Script>
+      </Script>
+
+      <Head>
         <title></title>
         <link
           rel="apple-touch-icon"
