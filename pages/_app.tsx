@@ -58,16 +58,17 @@ function TheWhitePaperApp({ Component, pageProps }: AppProps) {
     <>
       <Script
           strategy={'afterInteractive'}
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_ID}`}
+          src={`https://www.googletagmanager.com/gtag/js?id='${process.env.GOOGLE_ANALYTICS_ID}'`}
       ></Script>
-      <Script strategy={'afterInteractive'} id="google-analytics-script">
-        {`
-                  window.dataLayer = window.dataLayer || [];
+      <Script strategy={'afterInteractive'} id="google-analytics-script"   dangerouslySetInnerHTML={{
+          __html: `
+                 window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);}
                   gtag('js', new Date());
                 
                   gtag('config', '${process.env.GOOGLE_ANALYTICS_ID}');
-            `}
+  `,
+      }}>
       </Script>
 
       <Head>
