@@ -1,6 +1,6 @@
 export const pageView = (url:string) => {
     // @ts-ignore
-    window.gtag('config', process.env.GOOGLE_ANALYTICS_ID, {
+    window.gtag('config', 'G-8YNHDF3B6X', {
         path_url: url,
     })
 }
